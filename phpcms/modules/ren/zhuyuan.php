@@ -12,11 +12,12 @@ pc_base::load_sys_class('format', '', 0);
 pc_base::load_sys_class('form', '', 0);
 pc_base::load_app_func('util', 'content');
 
-class master extends admin {
+class zhuyuan extends admin {
 
     function __construct() {
         parent::__construct();
-            $this->db = pc_base::load_model('master_model');
+            $this->db = pc_base::load_model('zhuyuan_model');
+            $this->uinfo = pc_base::load_model('uinfo_model');
             $this->xlala = pc_base::load_model('xiala_model');
     }
 
@@ -40,8 +41,7 @@ class master extends admin {
         $infos = $this->db->listinfo(array('siteid'=>$this->get_siteid()),'id DESC',$page, '30');
         $pages = $this->db->pages;
 
-        $big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=ren&c=master&a=add\', title:\''.L('add_model').'\', width:\'580\', height:\'420\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('add_model'));
-        include $this->admin_tpl('master_list');
+        include $this->admin_tpl('health_list');
     }
 
     /**
@@ -83,10 +83,6 @@ class master extends admin {
                 $end_time = $tmptime;
                 unset($tmp, $tmptime);
             }
-
-
-
-
             $where = '';
             //如果是超级管理员角色，显示所有用户，否则显示当前站点用户
             if($_SESSION['roleid'] == 1) {
@@ -123,18 +119,16 @@ class master extends admin {
         $pages = $this->db->pages;
         $big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=ren&c=master&a=add\', title:\''.L('add_model').'\', width:\'580\', height:\'420\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('add_model'));
 
+
+
         include $this->admin_tpl('master_list');
     }
 
     /**
-     * 退休人员
+     * 住院信息
      */
     function manage() {
-        $modelid = $_GET['modelid'];
-        $sitelistarr = getcache('sitelist', 'commons');
-        foreach ($sitelistarr as $k=>$v) {
-            $sitelist[$k] = $v['name'];
-        }
+
         $groupid = isset($_GET['groupid']) ? intval($_GET['groupid']) : '';
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
@@ -147,8 +141,14 @@ class master extends admin {
             $where .= "`islock` = '0'";
         }
 
-        $xiala = $this->xia_list();
+        $memberlist_arr = $this->db->select($where);
 
+        foreach ($memberlist_arr as $key => $val){
+            $memberlist_arr[$key]['uinfo'] =  $this->uinfo->get_one(array('id'=>$val['peopleid']));
+            $memberlist_arr[$key]['uinfo']['zj'] = $this->xiala_name($memberlist_arr[$key]['uinfo']['zj']);
+        }
+        $data = $memberlist_arr;
+        $xiala = $this->xia_list();
         //搜索框
         $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
         $type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -156,15 +156,13 @@ class master extends admin {
         $end_time = isset($_GET['end_time']) ? $_GET['end_time'] : date('Y-m-d', SYS_TIME);
         $memberlist_arr = $this->db->listinfo($where, 'id DESC', $page, 15);
         $pages = $this->db->pages;
-
-
-        $big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=ren&c=master&a=add&modelid='.$modelid.'\', title:\''.L('添加人员').'\', width:\'1200\', height:\'500\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('添加人员'));
-        include $this->admin_tpl('master_list');
+        $big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=ren&c=zhuyuan&a=add\', title:\''.L('添加人员').'\', width:\'800\', height:\'500\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('添加人员'));
+        include $this->admin_tpl('zhuyuan_list');
     }
 
 
     /**
-     * add 退休人员
+     * add 健康档案
      */
     function add() {
         header("Cache-control: private");
@@ -172,26 +170,53 @@ class master extends admin {
             $info = $_POST['info'];
             $info['inputtime'] = $info['edittime'] = SYS_TIME;
             if($this->db->insert($info)){
-                showmessage(L('operation_success'),'?m=ren&c=master&a=add', '', 'add');
+                showmessage(L('operation_success'),'?m=ren&c=health&a=add', '', 'add');
             }
         } else {
-
             pc_base::load_sys_class('form', '', 0);
-
             $show_header = $show_scroll = true;
             $siteid = get_siteid();
-
-            $data = $this->xlala->select();
-            $data = node($data);
-            $xiala = array();
-            foreach($data  as $key=>$val){
-                $xiala[$val['id']] = $val;
-            }
-
-            include $this->admin_tpl('people_add');
+            $xiala = $this->xia_list();
+            include $this->admin_tpl('zhuyuan_add');
         }
 
     }
+    //获取人员信息
+    public function ajax_get_people(){
+        $id =$_POST['id'];
+        if(empty($id)){
+            $data = $this->uinfo->select();
+        }else{
+            $data = $this->uinfo->select(array('rylx'=>$id));
+        }
+        $str = "<select name='info[peopleid]'>";
+        foreach ($data as $key => $val){
+                $str .= "<option  value='".$val['id']."'>".$val['title']."</option>";
+        }
+        $str .= "</select>";
+        echo $str;
+    }
+
+    //获取医疗信息
+    public function ajax_get_dy(){
+        $id =$_POST['id'];
+        $this->health = pc_base::load_model('health_model');
+       $health_info =  $this->health->get_one(array('peopleid'=>$id));
+        if($health_info['yldy'] == 41 ){
+            $health_info['yldy'] = "医照";
+        }else{
+            $health_info['yldy'] = "非医照";
+        }
+
+       $data[] = "<div>".$health_info['ybxh']."</div>";
+       $data[] = "<div>".$health_info['yldy']."</div>";
+       echo json_encode($data)  ;
+
+
+
+
+    }
+
 
     public function edit() {
         //设置cookie 在附件添加处调用
@@ -199,15 +224,10 @@ class master extends admin {
         if(isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue'])) {
             define('INDEX_HTML',true);
             $id = $_POST['info']['id'] = intval($_POST['id']);
-
-            echo "<pre>";
-            var_dump( $_POST['info']);die;
-
-            if(trim($_POST['info']['title'])=='') showmessage(L('title_is_empty'));
             $data = $_POST['info'];
             $this->db->update($data, array('id'=>$id));
             if(isset($_POST['dosubmit'])) {
-                showmessage(L('update_success'), '?m=people&c=people&a=tx_manage', '', 'add');
+                showmessage(L('update_success'), '?m=ren&c=health&a=edit', '', 'edit');
             } else {
                 showmessage(L('update_success'),HTTP_REFERER);
             }
@@ -215,8 +235,8 @@ class master extends admin {
             $show_header = $show_dialog = $show_validator = '';
             //从数据库获取内容
             $id = intval($_GET['id']);
-            $this->model = getcache('people_model', 'commons');
             $data = $this->db->get_one(array('id'=>$id));
+            $uinfo = $this->uinfo->get_one(array('id'=>$data['peopleid']));
             //下拉框选择
             $set = $this->xlala->select();
             $set = node($set);
@@ -225,7 +245,7 @@ class master extends admin {
                 $xiala[$val['id']] = $val;
             }
             $data = array_map('htmlspecialchars_decode',$data);
-            include $this->admin_tpl('people_edit');
+            include $this->admin_tpl('health_edit');
         }
         header("Cache-control: private");
     }
@@ -578,6 +598,12 @@ class master extends admin {
         }
         setcache('people_array',$people_array,'people');
         return true;
+    }
+
+    //获取下拉列表的name
+    public function xiala_name($id){
+        $xiala = $this->xlala->get_one(array('id'=>$id));
+        return $xiala['name'];
     }
 
     //下拉列表

@@ -25,26 +25,61 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="zhuyuan.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/zhuyuan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="212" column="33" selection-start-line="212" selection-start-column="33" selection-end-line="212" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="global.func.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpcms/libs/functions/global.func.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="1327" column="26" selection-start-line="1327" selection-start-column="21" selection-end-line="1327" selection-end-column="26" />
+              <folding>
+                <marker date="1501487650429" expanded="true" signature="18003:18169" ph="..." />
+                <marker date="1501487650429" expanded="true" signature="18458:18467" ph="..." />
+                <marker date="1501487650429" expanded="true" signature="34135:34749" ph="..." />
+                <marker date="1501487650429" expanded="true" signature="34154:34737" ph="{...}" />
+                <marker date="1501487650429" expanded="true" signature="34506:34730" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zhuyuan_model.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpcms/model/zhuyuan_model.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zhuyuan_add.tpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/zhuyuan_add.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="188" column="42" selection-start-line="188" selection-start-column="42" selection-end-line="188" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/phpcms/modules/people/templates/xiala.tpl.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/admin/classes/admin.class.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/people/templates/sitemodel_manage.tpl.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/people/templates/sitemodel_edit.tpl.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/people/classes/people_cache.class.php" />
-        <option value="$PROJECT_DIR$/caches/caches_commons/caches_data/people_model.cache.php" />
-        <option value="$PROJECT_DIR$/phpcms/model/dangan_model.class.php" />
-        <option value="$PROJECT_DIR$/phpcms/model/uinfo_model.class.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/content/index.php" />
-        <option value="$PROJECT_DIR$/a.php" />
-        <option value="$PROJECT_DIR$/phpcms/model/content_model.class.php" />
         <option value="$PROJECT_DIR$/phpcms/modules/content/content.php" />
         <option value="$PROJECT_DIR$/phpcms/modules/admin/templates/category_page_add.tpl.php" />
         <option value="$PROJECT_DIR$/phpcms/modules/admin/templates/category_add.tpl.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/admin/category.php" />
         <option value="$PROJECT_DIR$/caches/caches_commons/caches_data/category_content_1.cache.php" />
         <option value="$USER_HOME$/Desktop/v9_news.sql" />
         <option value="$PROJECT_DIR$/phpcms/modules/content/templates/content_list.tpl.php" />
@@ -76,11 +111,23 @@
         <option value="$PROJECT_DIR$/phpcms/modules/master/install/module.sql" />
         <option value="$PROJECT_DIR$/phpcms/modules/master/install/people.sql" />
         <option value="$PROJECT_DIR$/phpcms/modules/master/install/extention.inc.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/master_list.tpl.php" />
         <option value="$PROJECT_DIR$/phpcms/modules/people/people.php" />
         <option value="$PROJECT_DIR$/phpcms/libs/functions/extention.func.php" />
-        <option value="$PROJECT_DIR$/phpcms/modules/ren/master.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/link/link.php" />
         <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/people_add.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/people_edit.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/languages/zh-cn/ren.lang.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/master.php" />
+        <option value="$PROJECT_DIR$/phpcms/model/health_model.class.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/master_list.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/admin/category.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/health_add.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/health_edit.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/health.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/health_list.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/model/zhuyuan_model.class.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/templates/zhuyuan_add.tpl.php" />
+        <option value="$PROJECT_DIR$/phpcms/modules/ren/zhuyuan.php" />
       </list>
     </option>
   </component>
@@ -204,28 +251,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="video" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oa" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phpcms" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ren" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -269,10 +294,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\www\oa\phpcms\modules\ren\templates" />
-      <recent name="E:\www\oa\phpcms\modules\people\templates" />
-      <recent name="E:\www\oa\phpcms\modules\video" />
       <recent name="E:\www\oa\phpcms\model" />
-      <recent name="E:\www\oa\phpcms\modules" />
+      <recent name="E:\www\oa\phpcms\modules\ren" />
+      <recent name="E:\www\oa\phpcms\languages\zh-cn" />
+      <recent name="E:\www\oa\phpcms\modules\people\templates" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Application.oa">
@@ -360,21 +385,22 @@
       <workItem from="1502066550840" duration="24785000" />
       <workItem from="1502153543998" duration="28532000" />
       <workItem from="1502239563744" duration="25115000" />
-      <workItem from="1502325418479" duration="107000" />
+      <workItem from="1502325418479" duration="30359000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226570000" />
+    <option name="totallyTimeSpent" value="256822000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23971723" sideWeight="0.49107143" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -385,7 +411,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3548387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -442,235 +467,15 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_list_dangan.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/content/fields/people_model.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_list_zhuyuan.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/model/zyinfo_model.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caches/caches_model/caches_data/model_field_143.cache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caches/caches_model/caches_data/model_field_87.cache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3344">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caches/caches_model/caches_data/model_field_141.cache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="113" column="36" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caches/caches_model/caches_data/content_form.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/content/fields/box/form.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="43" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caches/caches_model/caches_data/model_field_137.cache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/renshi/fields/content_form.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/model/master_model.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/renshi/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/renshi/down.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/renshi/create_html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/video/master.php" />
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/sitemodel_field.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/templates/add_atten.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/templates/daily.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/languages/zh-cn/master.lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/templates/people.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-441">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/uninstall/extention.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/uninstall/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/uninstall/people.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/classes/master_cache.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/people.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/module.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="172" selection-start-line="0" selection-start-column="172" selection-end-line="0" selection-end-column="172" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/extention.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/install/config.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/video/stat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-858">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/video/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/video/player.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="27" column="35" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/phpcms/modules/content/content.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <marker date="1502159517334" expanded="true" signature="36462:36596" ph="..." />
+            <marker date="1502159517334" expanded="false" signature="36515:36522" ph="..." />
+            <marker date="1502159517334" expanded="true" signature="44862:44891" ph="INSERT INTO `${$db}`... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -678,6 +483,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -685,6 +491,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-914">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -692,6 +499,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1446693310540" expanded="true" signature="7314:7370" ph="DELETE FROM " />
+            <marker date="1446693310540" expanded="true" signature="10248:10257" ph="..." />
+            <marker date="1446693310540" expanded="true" signature="10324:10452" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -699,30 +511,200 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="55" column="34" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/member_list.tpl.php" />
     <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/people_list_dangan.tpl.php" />
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/people_add_tx.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3036">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_add.tpl.php" />
     <entry file="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_add_tx.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/sitemodel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/vote/vote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="16" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/index.php" />
+    <entry file="file://$PROJECT_DIR$/phpcms/libs/functions/extention.func.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="305" column="13" selection-start-line="305" selection-start-column="9" selection-end-line="305" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/content/fields/content_form.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/content/templates/content_edit.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2300">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="75" column="27" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/link/templates/link_add.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="58" column="55" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/link/link.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="85" column="19" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/libs/classes/form.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="93" column="28" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="28" />
+          <folding>
+            <marker date="1499912066082" expanded="true" signature="3271:3778" ph="..." />
+            <marker date="1499912066082" expanded="true" signature="3324:3772" ph="..." />
+            <marker date="1499912066082" expanded="true" signature="3328:3529" ph="..." />
+            <marker date="1499912066082" expanded="true" signature="3411:3526" ph="..." />
+            <marker date="1499912066082" expanded="false" signature="3641:3647" ph=" " />
+            <marker date="1499912066082" expanded="true" signature="3845:3857" ph="..." />
+            <marker date="1499912066082" expanded="true" signature="8212:8479" ph="..." />
+            <marker date="1499912066082" expanded="true" signature="8232:8460" ph="{&quot;weekNumbers&quot;: EXTERNAL_FRAGMENT...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/link/templates/link_edit.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="72" column="45" selection-start-line="72" selection-start-column="45" selection-end-line="72" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/people_edit.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="282" column="65" selection-start-line="282" selection-start-column="65" selection-end-line="282" selection-end-column="65" />
+          <folding>
+            <marker date="1502331680997" expanded="true" signature="5417:5470" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="5995:6048" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="6475:6528" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="13868:13921" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="13963:14068" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="14168:14221" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="14263:14368" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="14468:14521" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="14563:14690" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="14631:14690" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="14998:15100" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="15033:15100" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="15815:16066" ph="..." />
+            <marker date="1502331680997" expanded="true" signature="15835:16055" ph="{...}" />
+            <marker date="1502331680997" expanded="true" signature="15873:16047" ph="{...}" />
+            <marker date="1502331680997" expanded="true" signature="15935:15984" ph="{...}" />
+            <marker date="1502331680997" expanded="true" signature="15988:16037" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/languages/zh-cn/people.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/languages/zh-cn/admin.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15676">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499395511584" expanded="true" signature="13548:13771" ph="..." />
+            <marker date="1499395511584" expanded="true" signature="22960:22971" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/languages/zh-cn/master.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/languages/zh-cn/member.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8654">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/languages/zh-cn/ren.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/people_add_tx.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5412">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_list_tx.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="21" selection-start-line="15" selection-start-column="12" selection-end-line="20" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/phpcms/modules/people/people.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="162" column="3" selection-start-line="162" selection-start-column="3" selection-end-line="162" selection-end-column="3" />
+        <state relative-caret-position="2024">
+          <caret line="184" column="91" selection-start-line="180" selection-start-column="7" selection-end-line="184" selection-end-column="91" />
           <folding>
             <element signature="n#_get_linkage_fullname#0;n#people#0;n#!!top" expanded="false" />
             <element signature="n#_checkpasswd#0;n#people#0;n#!!top" expanded="false" />
@@ -731,76 +713,207 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/master_list.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/sitemodel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/vote/vote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="16" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/index.php" />
-    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/people_add.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="308" column="23" selection-start-line="308" selection-start-column="23" selection-end-line="308" selection-end-column="23" />
-          <folding>
-            <marker date="1502273383421" expanded="true" signature="6891:6944" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="7060:7112" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="7286:7339" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="7462:7514" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="7684:7737" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="7853:7905" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="8607:8660" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="9094:9146" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="9323:9376" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="9502:9554" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="9731:9733" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="9733:9785" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="10261:10287" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="10287:10314" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="10489:10542" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="10975:11027" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="11507:11560" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="11680:11732" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="12214:12267" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="12385:12437" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="12604:12657" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="12779:12831" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="12999:13052" ph="..." />
-            <marker date="1502273383421" expanded="true" signature="13550:13602" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/master.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="195" column="13" selection-start-line="195" selection-start-column="13" selection-end-line="195" selection-end-column="13" />
+        <state relative-caret-position="3102">
+          <caret line="155" column="91" selection-start-line="155" selection-start-column="91" selection-end-line="155" selection-end-column="91" />
           <folding>
-            <marker date="1502270723734" expanded="true" signature="8845:8940" ph="..." />
-            <marker date="1502270723734" expanded="true" signature="9409:9547" ph="..." />
+            <marker date="1502333749229" expanded="true" signature="6023:6174" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phpcms/libs/functions/extention.func.php">
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/admin/admin_manage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="305" column="13" selection-start-line="305" selection-start-column="9" selection-end-line="305" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/model/health_model.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/model/people1_model.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/admin/templates/category_link.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1068">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/renshi/templates/content_list_video.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="24" column="186" selection-start-line="24" selection-start-column="152" selection-end-line="24" selection-end-column="186" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/admin/templates/category_edit.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="330" column="9" selection-start-line="330" selection-start-column="9" selection-end-line="330" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/admin/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="722" column="9" selection-start-line="720" selection-start-column="8" selection-end-line="722" selection-end-column="9" />
+          <folding>
+            <marker date="1502340466886" expanded="true" signature="3709:4125" ph="..." />
+            <marker date="1502340466886" expanded="true" signature="11073:11137" ph="select catid... phpcms_category" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpsso_server/phpcms/libs/functions/global.func.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="755" column="13" selection-start-line="755" selection-start-column="13" selection-end-line="755" selection-end-column="13" />
+          <folding>
+            <marker date="1499130259710" expanded="true" signature="13805:13971" ph="..." />
+            <marker date="1499130259710" expanded="true" signature="14260:14269" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/admin/templates/googlesitemap.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/master_list.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding>
+            <marker date="1502338097652" expanded="true" signature="1622:1721" ph="..." />
+            <marker date="1502338097652" expanded="true" signature="2375:2439" ph="..." />
+            <marker date="1502338097652" expanded="true" signature="3009:3065" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/people_add.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="158" column="37" selection-start-line="154" selection-start-column="27" selection-end-line="158" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/health_add.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/health_edit.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="846">
+          <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
+          <folding>
+            <marker date="1502349796923" expanded="true" signature="4928:4981" ph="..." />
+            <marker date="1502349796923" expanded="true" signature="5109:5162" ph="..." />
+            <marker date="1502349796923" expanded="true" signature="5206:5335" ph="..." />
+            <marker date="1502349796923" expanded="true" signature="5276:5335" ph="..." />
+            <marker date="1502349796923" expanded="true" signature="5642:5695" ph="..." />
+            <marker date="1502349796923" expanded="true" signature="5862:5915" ph="..." />
+            <marker date="1502349796923" expanded="true" signature="6403:6562" ph="{...}" />
+            <marker date="1502349796923" expanded="true" signature="6441:6562" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/health.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="185" column="39" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="39" />
+          <folding>
+            <marker date="1502350174065" expanded="true" signature="5605:5686" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/zhuyuan_list.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/health_list.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/model/zhuyuan_model.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/libs/functions/global.func.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="1327" column="26" selection-start-line="1327" selection-start-column="21" selection-end-line="1327" selection-end-column="26" />
+          <folding>
+            <marker date="1501487650429" expanded="true" signature="18003:18169" ph="..." />
+            <marker date="1501487650429" expanded="true" signature="18458:18467" ph="..." />
+            <marker date="1501487650429" expanded="true" signature="34135:34749" ph="..." />
+            <marker date="1501487650429" expanded="true" signature="34154:34737" ph="{...}" />
+            <marker date="1501487650429" expanded="true" signature="34506:34730" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/templates/zhuyuan_add.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="188" column="42" selection-start-line="188" selection-start-column="42" selection-end-line="188" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_0.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="371" column="9" selection-start-line="371" selection-start-column="9" selection-end-line="371" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpcms/modules/ren/zhuyuan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="212" column="33" selection-start-line="212" selection-start-column="33" selection-end-line="212" selection-end-column="33" />
           <folding />
         </state>
       </provider>

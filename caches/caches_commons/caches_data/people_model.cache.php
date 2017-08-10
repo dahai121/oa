@@ -11,7 +11,7 @@ return array (
     'addtime' => '0',
     'items' => '0',
     'enablesearch' => '1',
-    'disabled' => '0',
+    'disabled' => '1',
     'default_style' => 'default',
     'category_template' => 'category',
     'list_template' => 'list',

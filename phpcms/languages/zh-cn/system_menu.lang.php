@@ -492,4 +492,7 @@ $LANG['renshi'] = '人员信息';
 $LANG['renyuan'] = '人员信息';
 $LANG['xiala'] = '下拉菜单';
 $LANG['xiala'] = '下拉列表';
+$LANG['jkda'] = '健康档案';
+$LANG['zyxx'] = '住院信息管理';
+$LANG['zyxx'] = '住院信息管理';
 ?>

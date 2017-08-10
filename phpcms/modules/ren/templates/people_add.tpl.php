@@ -114,7 +114,7 @@
 </script>
 <div class="pad-10">
     <div class="common-form">
-        <form name="myform" action="?m=ren&c=master&a=add" method="post" id="myform">
+        <form name="myform" action="?m=ren&c=master&a=add" method="post" id="myform"  enctype="application/x-www-form-urlencoded">
             <fieldset>
                 <legend><?php echo L('basic_configuration') ?></legend>
                 <table width="100%" class="table_form">
@@ -123,6 +123,7 @@
                         <td width="80"><?php echo L('人员类型') ?></td>
                         <td>
                             <select name="info[rylx]" class="rylx" id="selectAge">
+                                <option value=""></option>
                                 <?php foreach ($xiala[76]['child'] as $key => $val ){  ?>
                                     <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
                                 <?php } ?>
@@ -270,8 +271,11 @@
                     <tr>
                         <td width="80"><?php echo L('email') ?></td>
                         <td><input type="text" name="info[email]" class="input-text" id=""></input></td>
-                        <td width="80"><?php echo L('照片') ?></td>
-                        <td><input type="text" name="info[pic]" class="input-text" id=""></input></td>
+
+                        <td width="80"><?php echo L('头像') ?></td>
+                        <td>
+                          <?php echo form::images('info[pic]', 'photo', '', 'ren')?>
+                        </td>
                     </tr>
 
                     <tr>
@@ -299,10 +303,10 @@
                     </tr>
                     <div >
                     <tr id="ltx">
-                        <td width="80"><?php echo L('离/退休单位') ?></td>
-                        <td><input type="text" name="info[ltxdw]" class="input-text" id=""></input></td>
-                        <td width="80"><?php echo L('离/退休时间') ?></td>
-                        <td><input type="text" name="info[ltxtime]" class="input-text" id="name"></input></td>
+                        <td width="80" class="ltx"  ><?php echo L('离/退休单位') ?></td>
+                        <td class="ltx"><input type="text" name="info[ltxdw]" class="input-text" id=""></input></td>
+                        <td width="80" class="ltx"><?php echo L('离/退休时间') ?></td>
+                        <td class="ltx"><input type="text" name="info[ltxtime]" class="input-text" id="name"></input></td>
                     </tr>
                     </div>
                 </table>
@@ -321,15 +325,10 @@
         $(".rylx").change(function(){
            var ltx =  $(this).val();
             if(ltx!=77){
-                $("#lxt").show();
+                $(".ltx").show();
             }else{
-
-                $("#lxt").hide();
+                $(".ltx").hide();
             }
         });
-
-
-
-
     });
 </script>

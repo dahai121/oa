@@ -79,8 +79,6 @@
             onerror: "<?php echo L('deny_register') . L('or') . L('email_already_exist')?>",
             onwait: "<?php echo L('connecting_please_wait')?>"
         });
-
-
         $("#nickname").formValidator({
             onshow: "<?php echo L('input') . L('nickname')?>",
             onfocus: "<?php echo L('nickname') . L('between_2_to_20')?>"
@@ -116,16 +114,25 @@
 </script>
 <div class="pad-10">
     <div class="common-form">
-        <form name="myform" action="?m=people&c=people&a=add" method="post" id="myform">
+        <form name="myform" action="?m=ren&c=master&a=edit" method="post" id="myform"  enctype="application/x-www-form-urlencoded">
             <fieldset>
                 <legend><?php echo L('basic_configuration') ?></legend>
                 <table width="100%" class="table_form">
-                    <tr>
-                        <td width="80"><?php echo L('姓名') ?></td>
-                        <td><input type="text" name="info[name]" class="input-text" id="name"></input></td>
-                    </tr>
 
                     <tr>
+                        <td width="80"><?php echo L('人员类型') ?></td>
+                        <td>
+                            <select name="info[rylx]" class="rylx" id="selectAge">
+                                <option value=""></option>
+                                <?php foreach ($xiala[76]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>" <?php if($data['rylx'] == $val['id'] ){ echo "selected=\"selected\"";} ?>  ><?php echo $val['name'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="80"><?php echo L('姓名') ?></td>
+                        <td><input type="text" name="info[name]" class="input-text" id="name" value="<?php echo $data['name'] ?>" ></input></td>
                         <td width="80"><?php echo L('性别') ?></td>
                         <td>
                             <label><input name="info[sex]" type="radio" value="男" />男 </label>
@@ -135,219 +142,194 @@
 
                     <tr>
                         <td width="80"><?php echo L('出生年月') ?></td>
-                        <td><input type="text" name="info[birthday]" class="input-text" id="name"></input></td>
-                    </tr>
-
-                    <tr>
+                        <td><input type="text" name="info[birthday]" class="input-text" id="name" value="<?php echo $data['birthday'] ?>" ></input></td>
                         <td width="80"><?php echo L('身份证号') ?></td>
-                        <td><input type="text" name="info[sfz]" class="input-text" id=""></input></td>
+                        <td><input type="text" name="info[sfz]" class="input-text" id="" value="<?php echo $data['sfz'] ?>" ></input></td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('民族') ?></td>
-                        <td><input type="text" name="info[nation]" class="input-text" id="nation"></input></td>
-                    </tr>
-
-                    <tr>
+                        <td><input type="text" name="info[nation]" class="input-text" id="nation" value="<?php echo $data['nation'] ?>" ></input></td>
                         <td width="80"><?php echo L('政治面貌') ?></td>
                         <td>
                             <select name="info[zzmm]" id="selectAge">
-                                <option value="中共党员">中共党员</option>
-                                <option value="中共预备党员">中共预备党员</option>
-                                <option value="民革党员">民革党员</option>
-                                <option value="民盟盟员">民盟盟员</option>
-                                <option value="民主促进会会员">民主促进会会员</option>
-                                <option value="农工民主党党员">农工民主党党员</option>
-                                <option value="致公党党员">致公党党员</option>
-                                <option value="九三学社社员">九三学社社员</option>
-                                <option value="台盟盟员">台盟盟员</option>
-                                <option value="无党派民主人士">无党派民主人士</option>
-                                <option value="群众">群众</option>
+                                <?php foreach ($xiala[50]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('籍贯') ?></td>
-                        <td><input type="text" name="info[jg]" class="input-text" id=""></input></td>
-                    </tr>
-
-                    <tr>
+                        <td><input type="text" name="info[jg]" class="input-text" id="" value="<?php echo $data['jg'] ?>" ></input></td>
                         <td width="80"><?php echo L('家庭住址') ?></td>
                         <td><input type="text" name="info[address]" class="input-text" id=""></input></td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('户口所在地派出所') ?></td>
-                        <td><input type="text" name="info[pcs]" class="input-text" id=""></input></td>
-                    </tr>
-
-                    <tr>
+                        <td><input type="text" name="info[pcs]" class="input-text" id="" value="<?php echo $data['pcs'] ?>" ></input></td>
                         <td width="80"><?php echo L('手机') ?></td>
-                        <td><input type="text" name="info[phone]" class="input-text" id=""></input></td>
+                        <td><input type="text" name="info[phone]" class="input-text" id="" value="<?php echo $data['phone'] ?>" ></input></td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('邮编') ?></td>
-                        <td><input type="text" name="info[yb]" class="input-text" id=""></input></td>
+                        <td><input type="text" name="info[yb]" class="input-text" id="" value="<?php echo $data['yb'] ?>" ></input></td>
+                        <td width="80"><?php echo L('联系地址') ?></td>
+                        <td><input type="text" name="info[lxdz]" class="input-text" id=""  value="<?php echo $data['lxdz'] ?>"></input></td>
                     </tr>
 
                     <tr>
-                        <td width="80"><?php echo L('联系地址') ?></td>
-                        <td><input type="text" name="info[lxdz]" class="input-text" id=""></input></td>
+                        <td width="80"><?php echo L('原单位') ?></td>
+                        <td>
+                            <select name="info[ydw]" id="selectAge">
+                                <?php foreach ($xiala[80]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('文化程度') ?></td>
                         <td>
                             <select name="info[education]" id="selectAge">
-                                <option value="研究生">研究生</option>
-                                <option value="大学">大学</option>
-                                <option value="大专">大专</option>
-                                <option value="中专">中专</option>
-                                <option value="技校">技校</option>
-                                <option value="高中">高中</option>
-                                <option value="初中及以下">初中及以下</option>
+                                <?php foreach ($xiala[30]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
                             </select>
                         </td>
-                    </tr>
-
-
-                    <tr>
                         <td width="80"><?php echo L('入党时间') ?></td>
-                        <td><input type="text" name="info[rdtime]" class="input-text" id="name"></input></td>
+                        <td><input type="text" name="info[rdtime]" class="input-text" id="name" value="<?php echo $data['rdtime'] ?>" ></input></td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('转正时间') ?></td>
-                        <td><input type="text" name="info[zztime]" class="input-text" id="name"></input></td>
-                    </tr>
-
-                    <tr>
+                        <td><input type="text" name="info[zztime]" class="input-text" id="name" value="<?php echo $data['zztime'] ?>" ></input></td>
                         <td width="80"><?php echo L('工作时间') ?></td>
-                        <td><input type="text" name="info[gztime]" class="input-text" id="name"></input></td>
+                        <td><input type="text" name="info[gztime]" class="input-text" id="name" value="<?php echo $data['gztime'] ?>" ></input></td>
                     </tr>
 
                     <tr>
-                        <td width="80"><?php echo L('离退休单位') ?></td>
-                        <td><input type="text" name="info[ltxdw]" class="input-text" id=""></input></td>
-                    </tr>
 
-                    <tr>
                         <td width="80"><?php echo L('职级') ?></td>
                         <td>
                             <select name="info[zj]" id="selectAge">
-                                <option value="正部级">正部级</option>
-                                <option value="副部级">副部级</option>
-                                <option value="正局级">正局级</option>
-                                <option value="副局级">副局级</option>
-                                <option value="正处级">正处级</option>
-                                <option value="正科级">正科级</option>
-                                <option value="副科级">副科级</option>
-                                <option value="工人">工人</option>
-                                <option value="干部">干部</option>
+                                <?php foreach ($xiala[60]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
-                        <td width="80"><?php echo L('离退休时间') ?></td>
-                        <td><input type="text" name="info[ltxtime]" class="input-text" id="name"></input></td>
-                    </tr>
-
-                    <tr>
                         <td width="80"><?php echo L('专业技术职位') ?></td>
-                        <td><input type="text" name="info[zyjszw]" class="input-text" id=""></input></td>
+                        <td><input type="text" name="info[zyjszw]" class="input-text" id="" value="<?php echo $data['zyjszw'] ?>" ></input></td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('专业职务级别') ?></td>
                         <td>
                             <select name="info[zyzwjb]" id="selectAge">
-                                <option value="正高级">正高级</option>
-                                <option value="副高级">副高级</option>
-                                <option value="中级">中级</option>
-                                <option value="初级">初级</option>
+                                <?php foreach ($xiala[65]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
                             </select>
                         </td>
-                    </tr>
-
-                    <tr>
                         <td width="80"><?php echo L('分管处室') ?></td>
                         <td>
                             <select name="info[fgcs]" id="selectAge">
-                                <option value="局办公室">局办公室</option>
-                                <option value="党委办公室">党委办公室</option>
-                                <option value="人事处">人事处</option>
-                                <option value="老部长办公室">老部长办公室</option>
-                                <option value="财务处">财务处</option>
-                                <option value="文体活动处">文体活动处</option>
-                                <option value="生活服务处">生活服务处</option>
-                                <option value="医疗保健处">医疗保健处</option>
-                                <option value="综合管理处">综合管理处</option>
+                                <?php foreach ($xiala[68]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('党内职务') ?></td>
-                        <td><input type="text" name="info[dnzw]" class="input-text" id=""></input></td>
-                    </tr>
+                        <td><input type="text" name="info[dnzw]" class="input-text" id="" value="<?php echo $data['dnzw'] ?>" ></input></td>
 
-                    <tr>
                         <td width="80"><?php echo L('所在党支部') ?></td>
                         <td>
                             <select name="info[szdzb]" id="selectAge">
-                                <option value="局办公室">局办公室</option>
-                                <option value="党委办公室">党委办公室</option>
-                                <option value="人事处">人事处</option>
-                                <option value="老部长办公室">老部长办公室</option>
-                                <option value="财务处">财务处</option>
-                                <option value="文体活动处">文体活动处</option>
-                                <option value="生活服务处">生活服务处</option>
-                                <option value="医疗保健处">医疗保健处</option>
-                                <option value="综合管理处">综合管理处</option>
+                                <?php foreach ($xiala[71]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('档案号') ?></td>
-                        <td><input type="text" name="info[dah]" class="input-text" id=""></input></td>
-                    </tr>
-
-                    <tr>
+                        <td><input type="text" name="info[dah]" class="input-text" id="" value="<?php echo $data['dah'] ?>" ></input></td>
                         <td width="80"><?php echo L('职务') ?></td>
-                        <td><input type="text" name="info[zw]" class="input-text" id=""></input></td>
+                        <td><input type="text" name="info[zw]" class="input-text" id="" value="<?php echo $data['zw'] ?>" ></input></td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('email') ?></td>
-                        <td><input type="text" name="info[email]" class="input-text" id=""></input></td>
-                    </tr>
+                        <td><input type="text" name="info[email]" class="input-text" id="" value="<?php echo $data['zw'] ?>" ></input></td>
 
-                    <tr>
-                        <td width="80"><?php echo L('照片') ?></td>
-                        <td><input type="text" name="info[pic]" class="input-text" id=""></input></td>
+                        <td width="80"><?php echo L('头像') ?></td>
+                        <td>
+                            <?php echo form::images('info[pic]', 'photo', $data['pic'], 'ren')?>
+                        </td>
                     </tr>
 
                     <tr>
                         <td width="80"><?php echo L('备注') ?></td>
-                        <td><input type="text" name="info[bz]" class="input-text" id=""></input></td>
+                        <td>
+                            <textarea name="info[bz]" style="width:200px;height:80px;"><?php echo $data['bz'] ?></textarea>
+                        </td>
                     </tr>
-
+                    <tr>
+                        <td width="80"><?php echo L('简历') ?></td>
+                        <td>
+                            <textarea name="info[jl]" style="width:200px;height:80px;"><?php echo $data['jl'] ?></textarea>
+                        </td>
+                    </tr>
                     <tr>
                         <td width="80"><?php echo L('类型') ?></td>
-                        <td><input type="text" name="info[lx]" class="input-text" id=""></input></td>
-                    </tr>
+                        <td>
+                            <select name="info[lx]" id="selectAge">
+                                <?php foreach ($xiala[74]['child'] as $key => $val ){  ?>
+                                    <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                                <?php } ?>
+                            </select>
 
+                        </td>
+                    </tr>
+                    <div >
+                    <tr id="ltx">
+                        <td width="80" class="ltx"  ><?php echo L('离/退休单位') ?></td>
+                        <td class="ltx"><input type="text" name="info[ltxdw]" class="input-text" id="" value="<?php echo $data['ltxdw'] ?>" ></input></td>
+                        <td width="80" class="ltx"><?php echo L('离/退休时间') ?></td>
+                        <td class="ltx"><input type="text" name="info[ltxtime]" class="input-text" id="name" value="<?php echo $data['ltxtime'] ?>" ></input></td>
+                    </tr>
+                    </div>
                 </table>
             </fieldset>
-            <input type="hidden" name="info[rylx]" value="1" >
             <div class="bk15"></div>
-            <input name="dosubmit" type="submit" id="dosubmit" value="<?php echo L('submit') ?>" class="dialog">
+            <input name="dosubmit" type="submit" id="dosubmit" value="<?php echo L('submit') ?>">
         </form>
     </div>
 </div>
 </body>
 </html>
+
+
+<script>
+    $(function () {
+        $(".rylx").change(function(){
+           var ltx =  $(this).val();
+            if(ltx!=77){
+                $(".ltx").show();
+            }else{
+                $(".ltx").hide();
+            }
+        });
+    });
+</script>

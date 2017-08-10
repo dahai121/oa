@@ -299,6 +299,8 @@ class category extends admin {
 			$this->privs = $this->priv_db->select(array('catid'=>$catid));
 			
 			$type = $_GET['type'];
+
+
 			if($type==0) {
 				include $this->admin_tpl('category_edit');
 			} elseif ($type==1) {
@@ -719,6 +721,7 @@ class category extends admin {
 		if (CHARSET == 'gbk') {
 			$html = array_iconv($html, 'gbk', 'utf-8');
 		}
+
 		echo json_encode($html);
 	}
 

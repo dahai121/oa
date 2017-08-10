@@ -11,7 +11,7 @@
 		<tr>
 		<td>
 		<div class="explain-col">
-			人员类型：
+			人员类型3：
 			<select name="rylx">
 				<option value='77' <?php if(isset($_GET['rylx']) && $_GET['rylx']==77){?>selected<?php }?>><?php echo L('在职')?></option>
 				<option value='79' <?php if(isset($_GET['rylx']) && $_GET['rylx']==79){?>selected<?php }?>><?php echo L('退休')?></option>
@@ -22,7 +22,7 @@
 			<?php echo form::date('start_time', $start_time)?>-
 			<?php echo form::date('end_time', $end_time)?>
 			姓名：<input name="keyword" type="text" value="<?php if(isset($_GET['keyword'])) {echo $_GET['keyword'];} ?>" class="input-text" />
-				<input type="submit" name="search" class="button" value="<?php echo L('search')?>" />
+				 <input type="submit" name="search" class="button" value="<?php echo L('search')?>" />
 	</div>
 		</td>
 		</tr>
@@ -30,7 +30,7 @@
 </table>
 </form>
 
-<form name="myform" action="?m=ren&c=master&a=delete" method="post" onsubmit="checkuid();return false;">
+<form name="myform" action="?m=ren&c=health&a=delete" method="post" onsubmit="checkuid();return false;">
 <div class="table-list">
 <table width="100%" cellspacing="0">
 	<thead>
@@ -38,38 +38,35 @@
 			<th  align="left" width="20"><input type="checkbox" value="" id="check_box" onclick="selectall('userid[]');"></th>
 			<th align="left"><?php echo L('id')?></th>
 			<th align="left"><?php echo L('姓名')?></th>
-			<th align="left"><?php echo L('民族')?></th>
-			<th align="left"><?php echo L('身份证')?></th>
-			<th align="left"><?php echo L('籍贯')?></th>
-			<th align="left"><?php echo L('住址')?></th>
-			<th align="left"><?php echo L('派出所')?></th>
-			<th align="left"><?php echo L('联系电话')?></th>
-			<th align="left"><?php echo L('联系地址')?></th>
+			<th align="left"><?php echo L('职级')?></th>
+			<th align="left"><?php echo L('序号')?></th>
+			<th align="left"><?php echo L('医疗待遇')?></th>
+			<th align="left"><?php echo L('主要病症')?></th>
+			<th align="left"><?php echo L('档案信息')?></th>
 			<th align="left"><?php echo L('是否锁定')?></th>
-			<th align="left"><?php echo L('operation')?></th>
+
 		</tr>
 	</thead>
 <tbody>
 <?php
-	if(is_array($memberlist_arr)){
-	foreach($memberlist_arr as $k=>$v) {
+	if(is_array($data)){
+	foreach($data as $k=>$v) {
 ?>
     <tr>
 		<td align="left"><input type="checkbox" value="<?php echo $v['id']?>" name="userid[]"></td>
 		<td align="left"><?php echo $v['id']?></td>
-		<td align="left"><?php echo $v['name']?></td>
-		<td align="left"><?php echo $v['nation']?></td>
-		<td align="left"><?php echo $v['sfz']?></td>
-		<td align="left"><?php echo $v['jg']?></td>
-		<td align="left"><?php echo $v['address']?></td>
-
-		<td align="left"><?php echo $v['pcs']?></td>
-		<td align="left"><?php echo $v['phone']?></td>
-		<td align="left"><?php echo $v['lxdz']?></td>
-		<td align="left"><?php  if($v['islock'] =='1' ){echo  "锁定";}else{echo "未锁定";}?></td>
 		<td align="left">
-			<a href="javascript:;" onclick="javascript:openwinx('?m=ren&c=master&a=edit&id=<?php echo $v['id'] ?>','')"><?php echo L('edit'); ?></a>
+			<a href="javascript:;" onclick="javascript:openwinx('?m=ren&c=health&a=edit&id=<?php echo $v['id'] ?>','')"> <?php echo $v['uinfo']['title'] ?> </a>
 		</td>
+		<td align="left"><?php echo $v['uinfo']['zj'] ?></td>
+		<td align="left"><?php echo $v['ybxh']?></td>
+		<td align="left">
+			<?php if($v['ybxh'] == 42 ){echo "医照";}elseif($v['ybxh'] == 41){ echo "非医照";}?>
+		</td>
+		<td align="left"><?php echo $v['zybz']?></td>
+		<td align="left"><a>档案信息</a></td>
+		<td align="left"><?php  if($v['islock'] =='1' ){echo  "锁定";}else{echo "未锁定";}?></td>
+
     </tr>
 <?php
 	}
@@ -80,8 +77,8 @@
 
 <div class="btn">
 <label for="check_box"><?php echo L('select_all')?>/<?php echo L('cancel')?></label>
-	<input type="submit" class="button" name="dosubmit" onclick="document.myform.action='?m=ren&c=master&a=lock'" value="<?php echo L('lock')?>"/>
-	<input type="submit" class="button" name="dosubmit" onclick="document.myform.action='?m=ren&c=master&a=unlock'" value="<?php echo L('unlock')?>"/>
+	<input type="submit" class="button" name="dosubmit" onclick="document.myform.action='?m=ren&c=health&a=lock'" value="<?php echo L('lock')?>"/>
+	<input type="submit" class="button" name="dosubmit" onclick="document.myform.action='?m=ren&c=health&a=unlock'" value="<?php echo L('unlock')?>"/>
 	<input type="submit" class="button" name="dosubmit" value="<?php echo L('delete')?>" onclick="return confirm('<?php echo L('sure_delete')?>')"/>
 <!--input type="button" class="button" name="dosubmit" onclick="move();return false;" value="<!--?php echo L('move')?>"/-->
 </div>
@@ -94,8 +91,11 @@
 <!--
 function edit(id, name) {
 	window.top.art.dialog({id:'edit'}).close();
-	window.top.art.dialog({title:'<?php echo L('edit').L('people')?>《'+name+'》',id:'edit',iframe:'?m=ren&c=master&a=edit&userid='+id,width:'700',height:'500'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
+	window.top.art.dialog({title:'<?php echo L('edit').L('people')?>《'+name+'》',id:'edit',iframe:'?m=ren&c=health&a=edit&userid='+id,width:'400',height:'300'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
 }
+
+
+
 function move() {
 	var ids='';
 	$("input[name='userid[]']:checked").each(function(i, n){
