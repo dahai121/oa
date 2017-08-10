@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script>
+	$.ajax({
+	async:false,//false代表只有在等待ajax执行完毕后才执行window.open('http://www.phpernote.com')语句
+	type:'GET',
+	cache: false, //或者设置true
+	url:'http://192.168.1.182/index.php?m=content&c=index&a=getuserid',
+	dataType:'json',
+	success:function(msg){
+					if(!msg.userid){
+			      if (window.stop)
+				    window.stop();
+				    else
+				    document.execCommand("Stop");
+				    location.href="index.php?m=member&c=index&a=login";
+				  }
+	}
+});											
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>PHPCMS演示站</title>
+<meta name="keywords" content="PHPCMS演示站">
+<meta name="description" content="PHPCMS演示站">
+<link href="/statics/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="/statics/css/default_blue.css" rel="stylesheet" type="text/css" />
+<link href="/statics/css/oa.css" rel="stylesheet" type="text/css" />
+<link href="/statics/css/dialog_simp.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/jquery.sgallery.js"></script>
+<script type="text/javascript" src="/statics/js/search_common.js"></script>
+<script type="text/javascript" src="/statics/js/banner1.js"></script>
+<script type="text/javascript" src="/statics/js/dialog.js"></script>
+</head>
+<body>
+	
+ <div id="headertube">
+    <div class="top-header"> <span class="f-l setindex"><s class="date ie6_png32"></s><em id="echoData"></em></span> 
+    	<span class="f-l weather">
+			<iframe width="300" scrolling="no" height="25" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=10&icon=1"></iframe>
+      </span>
+      <span class="f-r dl">
+							<iframe src="http://www.oa.com/index.php?m=member&c=index&a=mini&forward=&siteid=1" allowTransparency="true" height="40" frameborder="0" scrolling="no"></iframe>
+			</span>
+    </div>
+</div>
+<div class="body-top"></div>
+
+<script type="text/javascript">
+$(function(){
+	$('#tog').toggle(function(){
+		$(this).animate({top:'333px'},320).addClass("togclose").removeClass("tog").html('<span>关闭</span>');
+		$('.tog_contact').slideDown(320);
+	},function(){
+		$(this).animate({top:'40px'},320).addClass("tog").removeClass("togclose").html('<span>重要信息提示</span>');
+		$('.tog_contact').slideUp(320);
+	})
+});
+</script>
+
+<!-- 代码 开始 -->
+<div class="tog_contact">
+	<div class="t_con_box">
+			<ul class="list">
+					         	 											<li><span class="rt">03-30</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><div class="catid">局务会情况通报</div><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=41&id=178" target="_blank" title="2017年局务会情况通报第10期">2017年局务会情况通报第10期</a></span></li>
+           											<li><span class="rt">03-22</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><div class="catid">局务会情况通报</div><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=41&id=177" target="_blank" title="2017年局务会情况通报第9期">2017年局务会情况通报第9期</a></span></li>
+             
+              
+			</ul>
+	</div>
+</div>
+<div class="tog" id="tog"><span>重要信息提示</span></div>
+<div class="header">
+   <div class="banner"><script language="javascript" src="http://www.oa.com/index.php?m=poster&c=index&a=show_poster&id=1"></script></div>
+   <div style="POSITION: relative; WIDTH: 1000px; FLOAT: right"><img src="/statics/images//banner.png" /></div>    
+</div>    	
+
+   <div class="bk10"></div>
+   <div class="webmenu"> 
+    									<map>
+    									<div class="menu_left"></div>
+								    				
+								     	<a  class="menuitem3" href="http://192.168.1.182">网站首页</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=10">片区工作</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=11">公文信息</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=17">领导讲话</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=18">业务学习</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=26">工作流程</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=27">制度管理</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=28">汇编文件</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=39">会员单位</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=40">存档文件</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=41">局务会情况通报</a>
+																						<a  class="menuitem"  onfocus="this.blur()" href="http://www.oa.com/index.php?m=content&c=index&a=lists&catid=42">共享文件夹</a>
+																			      																						<div class="menu_right"></div>
+											<a class="menuitem2" href="#">企业咨询</a>
+								      </map>
+   </div> 
+
+<div class="clear"></div><div class="content">
+		<link rel="stylesheet" href="/statics/css/hyxxstyle.css">
+
+   <div class="content_left">
+   	
+   	 <div class="memlog">
+	     <h1>会员信息</h1>
+	     <div class="intro">
+	        <!--a href="" title=""><img src="images/rwzf1.jpg" width="110px" height="113px" alt="" /></a-->
+	        <a title="修改avatar" href="index.php?m=member&c=index&a=account_manage_avatar&t=1"><img src="" width="70" height="70" onerror="this.src='statics/images/member/nophoto.gif'"></a> 
+	        <h2><font color="#049">姓名：</font>瓦诶的</h2>
+	        <h2><font color="#049">处室：</font>大苏打打</h2>
+	        <h2><font color="#049">职位：</font>的萨大苏打斯的</h2>
+	     </div><!--intro end-->
+
+
+	     
+	     		
+	     		<div class="introhy">  
+	     			<div class="wrap">
+		<div class="all-sort-list">
+			<div class="item">
+				<h3><a>会员中心</a></h3>
+				<div class="item-list clearfix" style="margin-top:-70px;">
+					<div class="close">x</div>
+					<div class="subitem">
+						<dl class="fore1">
+							<dt><a href="#">电子书2</a></dt>
+							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
+						</dl>
+						<dl class="fore2">
+							<dt><a href="#">数字音乐</a></dt>
+							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
+						</dl>
+						<dl class="fore3">
+							<dt><a href="#">音像</a></dt>
+							<dd><em><a href="#">音乐</a></em><em><a href="#">影视</a></em><em><a href="#">教育音像</a></em><em><a href="#">游戏</a></em></dd>
+						</dl>
+						<dl class="fore4">
+							<dt>文艺</dt>
+							<dd><em><a href="#">小说</a></em><em><a href="#">文学</a></em><em><a href="#">青春文学</a></em><em><a href="#">传记</a></em><em><a href="#">艺术</a></em></dd>
+						</dl>
+						<dl class="fore5">
+							<dt>人文社科</dt>
+																	<dd><em><a href="#">历史</a></em><em><a href="#">心理学</a></em><em><a href="#">政治/军事</a></em><em><a href="#">国学/古籍</a></em><em><a href="#">哲学/宗教</a></em><em><a href="#">社会科学</a></em></dd>
+																</dl>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>   	
+	     		
+	     			</div>   	
+	     		
+	     		
+	     		
+
+
+
+
+
+
+     
+     </div><!--rwzf end-->
+   	
+   	
+   	
+      <div class="rdsp">
+        <h1>热点视频</h1>
+        <ul>
+ 																																	
+									<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=22&id=32" title="欢乐中国年"><img src="/uploadfile/2017/0509/20170509034936691.jpg" width="108px" height="65px" alt="" /><span>欢乐中国年</span></a></li>
+																									
+									<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=22&id=35" title="建国大业"><img src="/uploadfile/2017/0509/20170509034537166.jpg" width="108px" height="65px" alt="" /><span>建国大业</span></a></li>
+																									
+									<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=22&id=29" title="浴火的凤凰1"><img src="/uploadfile/2017/0509/20170509035330591.jpg" width="108px" height="65px" alt="" /><span>浴火的凤凰1</span></a></li>
+																									
+									<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=22&id=26" title="政务礼仪培训1"><img src="/uploadfile/2017/0509/20170509035454880.jpg" width="108px" height="65px" alt="" /><span>政务礼仪培训1</span></a></li>
+																									
+									<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=22&id=30" title="太行山上cd1"><img src="/uploadfile/2017/0509/20170509035016178.jpg" width="108px" height="65px" alt="" /><span>太行山上cd1</span></a></li>
+																									
+									<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=22&id=14" title="鬼子来了cd2"><img src="/uploadfile/2017/0509/20170509040445316.jpg" width="108px" height="65px" alt="" /><span>鬼子来了cd2</span></a></li>
+																       	
+        </ul>
+      </div><!--rdsp end-->
+      <div class="qyfc">
+            <h1>两学一做</h1>
+               <div class="intro">
+									        	 		  
+             		  
+               </div><!--intro end-->
+               <div class="list">
+                  <ul>
+                   																									<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民...</a></li>
+																						                  </ul>
+               </div><!--list end-->
+           </div><!--qyfc end-->
+           <div class="rwzf">
+               <h1>人物专访</h1>
+               <div class="intro">
+                  <a href="" title=""><img src="images/rwzf1.jpg" width="110px" height="113px" alt="" /></a>
+                  <h2><a href="" title="">阿根廷面临内外两</a></h2>
+                  <p>在布宜诺斯艾利斯，罢工工人用...<a href="" title="">[详细]</a></p>
+               </div><!--intro end-->
+               <div class="intro">
+                  <a href="" title=""><img src="images/rwzf2.jpg" width="110px" height="113px" alt="" /></a>
+                  <h2><a href="" title="">美财政悬崖忧虑缓</a></h2>
+                  <p>美国财政悬崖成为年底前全球经济的...<a href="" title="">[详细]</a></p>
+               </div><!--intro end-->
+               <div class="intro">
+                  <a href="" title=""><img src="images/rwzf3.jpg" width="110px" height="113px" alt="" /></a>
+                  <h2><a href="" title="">埃及总统被反对派</a></h2>
+                  <p>综合国外媒体报道，埃及总统穆尔西...<a href="" title="">[详细]</a></p>
+               </div><!--intro end-->
+           </div><!--rwzf end-->
+           <div class="dfpp">
+            <h1>两学一做</h1>
+               <div class="intro">
+									        	 		  
+             		  
+               </div><!--intro end-->
+               <div class="list">
+                  <ul>
+                   																									<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育...</a></li>
+																						                  </ul>
+               </div><!--list end-->
+           </div><!--dfpp end-->
+            <div class="zsjm">
+               <h1>两学一做</h1>
+               <div class="list">
+                  <ul>
+                   																									<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民...</a></li>
+																							<li><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同...</a></li>
+																						                  </ul>
+               </div><!--list end-->
+           </div><!--zsjm end-->
+           <div class="rdsp">
+             <h1>新品播报</h1>
+               <ul>
+                 <li><a href="" title=""><img src="images/rdsp1.jpg" width="108px" height="110px" alt="" /><span>德国会议通过...</span></a></li>
+                 <li><a href="" title=""><img src="images/rdsp2.jpg" width="108px" height="110px" alt="" /><span>德国会议通过...</span></a></li>
+                 <li><a href="" title=""><img src="images/rdsp3.jpg" width="108px" height="110px" alt="" /><span>德国会议通过...</span></a></li>
+                 <li><a href="" title=""><img src="images/rdsp3.jpg" width="108px" height="110px" alt="" /><span>德国会议通过...</span></a></li>
+              </ul>
+          </div><!--rdsp end-->
+   </div><!--content_left end-->
+   
+   
+   	<script type="text/javascript">
+		$('.all-sort-list > .item').hover(function(){
+			var eq = $('.all-sort-list > .item').index(this),				//获取当前滑过是第几个元素
+				h = $('.all-sort-list').offset().top,						//获取当前下拉菜单距离窗口多少像素
+				s = $(window).scrollTop(),									//获取游览器滚动了多少高度
+				i = $(this).offset().top,									//当前元素滑过距离窗口多少像素
+				item = $(this).children('.item-list').height(),				//下拉菜单子类内容容器的高度
+				sort = $('.all-sort-list').height();						//父类分类列表容器的高度
+			if ( item < sort ){												//如果子类的高度小于父类的高度
+				if ( eq == 0 ){
+					$(this).children('.item-list').css('top', (i-h));
+				} else {
+					$(this).children('.item-list').css('top', (i-h)+1);
+				}
+			} else {
+				if ( s > h ) {												//判断子类的显示位置，如果滚动的高度大于所有分类列表容器的高度
+					if ( i-s > 0 ){											//则 继续判断当前滑过容器的位置 是否有一半超出窗口一半在窗口内显示的Bug,
+						$(this).children('.item-list').css('top', (s-h)+2 );
+					} else {
+						$(this).children('.item-list').css('top', (s-h)-(-(i-s))+2 );
+					}
+				} else {
+					$(this).children('.item-list').css('top', 3 );
+				}
+			}	
+			$(this).addClass('hover');
+			$(this).children('.item-list').css('display','block');
+		},function(){
+			$(this).removeClass('hover');
+			$(this).children('.item-list').css('display','none');
+		});
+		$('.item > .item-list > .close').click(function(){
+			$(this).parent().parent().removeClass('hover');
+			$(this).parent().hide();
+		});
+	</script>
+		   <div class="content_right">
+      <div class="left_top">
+         <div class="left_top_zuo">
+         		
+
+            <div class="FocusPic">
+                        	<div class="content" id="main-slide">
+                    <div class="changeDiv">  
+                                        </div>
+                </div>
+                        </div>
+
+            <div class="scdt">
+               <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:260px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+            </div><!--scdt end-->
+            <div class="hyaq">
+               <h1>学习与思考</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">07-22</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=72" target="_blank" title="坚定文化自信，固守精神家园（侯凤杰）">坚定文化自信，固守精神家园（侯凤杰）</a></span></li>
+																							<li><span class="rt">07-22</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=71" target="_blank" title="学习习近平总书记“七一”讲话心得体会(许佳)">学习习近平总书记“七一”讲话心得体会(许佳)</a></span></li>
+																							<li><span class="rt">07-22</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=69" target="_blank" title="不忘初心 坚持自信 在建设社会主义文化强国的道路上继续前进(谢飞)">不忘初心 坚持自信 在建设社会主义文化强国...</a></span></li>
+																							<li><span class="rt">03-15</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=67" target="_blank" title="座谈发言(周玲)">座谈发言(周玲)</a></span></li>
+																							<li><span class="rt">03-15</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=64" target="_blank" title="追寻座谈发言稿(张辉)">追寻座谈发言稿(张辉)</a></span></li>
+																							<li><span class="rt">03-15</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=63" target="_blank" title="演戏与做人（刘佼）">演戏与做人（刘佼）</a></span></li>
+																							<li><span class="rt">03-15</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=62" target="_blank" title="致敬共同青春  汇聚青春力量(侯凤杰)">致敬共同青春  汇聚青春力量(侯凤杰)</a></span></li>
+																							<li><span class="rt">03-19</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=52" target="_blank" title="陈晓宇同志的获奖文章">陈晓宇同志的获奖文章</a></span></li>
+																							<li><span class="rt">03-19</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=51" target="_blank" title="周玲同志的获奖文章">周玲同志的获奖文章</a></span></li>
+																							<li><span class="rt">03-19</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=23&id=49" target="_blank" title="厨艺大赛众吃相（一）">厨艺大赛众吃相（一）</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+            </div><!--hyaq end-->
+            <div class="ppzs">
+               <h1>图片新闻</h1>
+               <div class="list">
+                 <ul>
+                 																						<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=8&id=1" title="冶金离退休干部局党委召开离退休干部党支部工作骨干培训班"><img src="/statics/images/nopic.gif" width="101px" height="99px" alt="冶金离退休干部局党委召开离退休干部党支部工作骨干培训班"/><span>冶金离退休干...</span></a></li>
+																				<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=8&id=2" title="局机关党支部在组织在职党员赴河南兰考焦裕禄纪念馆参观学习"><img src="/statics/images/nopic.gif" width="101px" height="99px" alt="局机关党支部在组织在职党员赴河南兰考焦裕禄纪念馆参观学习"/><span>局机关党支部...</span></a></li>
+																				<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=8&id=3" title="国资委冶金机关离退休干部2017年迎春团拜会圆满召开"><img src="/statics/images/nopic.gif" width="101px" height="99px" alt="国资委冶金机关离退休干部2017年迎春团拜会圆满召开"/><span>国资委冶金机...</span></a></li>
+																				<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=8&id=4" title="我局举办离退休干部党支部工作骨干培训班"><img src="/statics/images/nopic.gif" width="101px" height="99px" alt="我局举办离退休干部党支部工作骨干培训班"/><span>我局举办离退...</span></a></li>
+																				<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=8&id=5" title="我局隆重举行2016年迎春团拜会"><img src="/statics/images/nopic.gif" width="101px" height="99px" alt="我局隆重举行2016年迎春团拜会"/><span>我局隆重举行...</span></a></li>
+																				<li><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=8&id=6" title="冶金离退休干部局党委纪念“七一”舞台剧 《追寻—青春走过七十年》汇报演出"><img src="/statics/images/nopic.gif" width="101px" height="99px" alt="冶金离退休干部局党委纪念“七一”舞台剧 《追寻—青春走过七十年》汇报演出"/><span>冶金离退休干...</span></a></li>
+																				                </ul> 
+               </div><!--list end-->   
+            </div><!--ppzs end-->
+         </div><!--top_left_zuo end-->
+         <div class="left_top_you">
+            <div class="hyyw">
+
+								<script>
+								$(function(){
+								$.ajax({
+								type:'GET',
+								cache: false, //或者设置true
+								url:'http://192.168.1.182/index.php?m=content&c=index&a=gettztg',
+								success:function(msg){
+												//alert(msg);
+												//console.log(msg);
+												$('#tztginfo').html(msg).show();
+												}
+											});
+								});						
+								</script>
+								<div id="tztginfo" ></div>
+
+            </div><!--hyyw end-->
+            <div class="hyfx">
+                <h1><span>政策之窗</span><a class="more" href="" title="">更多>></a></h1>              
+										        	 			             
+                <div class="list">
+                  <ul>   
+                   		                   														<li><span class="rt">01-19</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=75" target="_blank" title="中共中央组织部关于印发刘云山同志在全国老干部工作先进集体和先进工作者表彰大会上的">中共中央组织部关于印发刘云山同志在全国老干...</a></span></li>
+																							<li><span class="rt">12-30</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=74" target="_blank" title="陈希在全国老干部局长会议上的讲话2016年12月23日">陈希在全国老干部局长会议上的讲话2016年12月23日</a></span></li>
+																							<li><span class="rt">12-30</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=73" target="_blank" title="李炎溪在全国老干部局长会议上的总结讲话2016年12月24日">李炎溪在全国老干部局长会议上的总结讲话2016...</a></span></li>
+																							<li><span class="rt">03-03</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=61" target="_blank" title="张文宏在国资委管理局系统年度工作会议上的报告">张文宏在国资委管理局系统年度工作会议上的报告</a></span></li>
+																							<li><span class="rt">03-03</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=60" target="_blank" title="徐福顺在国资委管理局系统年度工作会议上的讲话">徐福顺在国资委管理局系统年度工作会议上的讲话</a></span></li>
+																							<li><span class="rt">03-03</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=59" target="_blank" title="陈希在全国老干部局长会议上的讲话">陈希在全国老干部局长会议上的讲话</a></span></li>
+																							<li><span class="rt">03-03</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=58" target="_blank" title="李炎溪在全国老干部局长会议上的总结讲话">李炎溪在全国老干部局长会议上的总结讲话</a></span></li>
+																							<li><span class="rt">03-03</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=57" target="_blank" title="冶金离退休干部局“三八红旗手”评比表彰办法">冶金离退休干部局“三八红旗手”评比表彰办法</a></span></li>
+																							<li><span class="rt">10-16</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=56" target="_blank" title="冶金离退休干部局差旅费报销管理办法">冶金离退休干部局差旅费报销管理办法</a></span></li>
+																							<li><span class="rt">10-16</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=14&id=21" target="_blank" title="科学发展观基本要求是全面协调可持续">科学发展观基本要求是全面协调可持续</a></span></li>
+																						                   </ul>
+                	
+                </div>
+            </div><!--hyfx end-->
+            <div class="dfdt">
+               <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+            </div><!--dfdt end-->
+            <div class="zhxx">
+               <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+            </div><!--zhxx end-->
+         </div><!--top_left_you end-->
+      </div><!--left_top end-->
+
+      <div class="bk"></div><!--清除浮动-->
+      <div class="left_center"><script language="javascript" src="http://www.oa.com/caches/poster_js/11.js"></script></div><!--left_center end-->
+      <div class="left_under">
+         <div class="left_under_zuo">
+           <div class="mjgf">
+            <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+         </div><!--mjgf end-->
+         <div class="mjgf">
+               <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+           </div><!--mjgf end--> 
+         </div><!--left_under_zuo end-->
+         <div class="left_under_you">
+           <div class="mjgf">
+            <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+           </div><!--tgmj end-->
+           <div class="mjgf">
+            <h1>两学一做</h1>
+								        	 	                             <div class="list" style="height:280px;">
+                  <ul>
+                  		              	
+																							<li><span class="rt">06-06</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=70" target="_blank" title="关于印发张毅同志“两学一做”学习教育专题党课稿的通知">关于印发张毅同志&ldquo;两学一做&rdquo;学习教育专题党...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=68" target="_blank" title="杨晓渡 学习和实践党章党规专题讲话">杨晓渡 学习和实践党章党规专题讲话</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=66" target="_blank" title="张毅在国资委直属机关和中央企业“两学一做”学习教育动员部署会上的讲话">张毅在国资委直属机关和中央企业&ldquo;两学一做&rdquo;...</a></span></li>
+																							<li><span class="rt">05-24</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=65" target="_blank" title="关于印发《冶金离退休干部局党委关于开展&ldquo;学党章党规、学系列讲话，做合格党员&rdquo;学习">关于印发《冶金离退休干部局党委关于开展&ldquo;学...</a></span></li>
+																							<li><span class="rt">10-09</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=55" target="_blank" title="习近平：在党的群众路线教育实践活动总结大会上的讲话">习近平：在党的群众路线教育实践活动总结大会...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=54" target="_blank" title="习近平总书记在纪念中国人民抗日战争暨世界反法西斯战争胜利69周年座谈会上的讲话">习近平总书记在纪念中国人民抗日战争暨世界反...</a></span></li>
+																							<li><span class="rt">09-26</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=53" target="_blank" title="习近平总书记在纪念邓小平同志诞辰110周年座谈会上的讲话">习近平总书记在纪念邓小平同志诞辰110周年座谈...</a></span></li>
+																							<li><span class="rt">11-21</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=50" target="_blank" title="中国共产党第十八次全国代表大会报告">中国共产党第十八次全国代表大会报告</a></span></li>
+																							<li><span class="rt">11-14</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=33" target="_blank" title="中共中央关于深化文化体制改革推动社会主义文化大发展大繁荣若干重大文体的决定（201">中共中央关于深化文化体制改革推动社会主义文...</a></span></li>
+																							<li><span class="rt">07-04</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=13&id=24" target="_blank" title="胡锦涛总书记在庆祝中国共产党成立90周年大会上的讲话">胡锦涛总书记在庆祝中国共产党成立90周年大会...</a></span></li>
+																						                  </ul>
+               </div><!--list end-->
+           </div><!--mjgf end-->
+         </div><!--left_under_you end-->
+      </div><!--left_under end-->
+   </div><!--content_right end-->
+   
+   
+   
+<script type="text/javascript"> 
+$(function(){
+	new slide("#main-slide","cur",372,242,1);//焦点图
+	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//排行TAB
+})
+</script>   
+
+<script type="text/javascript" src="/statics/js/jquery.tabso_yeso.js"></script>
+<script type="text/javascript" src="/statics/js/jquery.tabso_yeso1.js"></script>   <div class="clear"></div><!--清除浮动-->
+</div><!--content end-->
+<div class="bk10"></div>
+
+			<script  type="text/javascript"  src="/statics/js/common.js"></script>
+ 			<script  type="text/javascript">
+				 $(function(){
+					C.tabs({"params":[
+						{"nav":"#flink_group_0","con":"#flink_list_0","sclass":"current","nclass":""},
+						{"nav":"#flink_group_1","con":"#flink_list_1","sclass":"current","nclass":""},
+						{"nav":"#flink_group_2","con":"#flink_list_2","sclass":"current","nclass":""},
+						{"nav":"#flink_group_3","con":"#flink_list_3","sclass":"current","nclass":""},
+						{"nav":"#flink_group_4","con":"#flink_list_4","sclass":"current","nclass":""}
+						]
+					});
+				});
+			</script>
+			<div  class="web_nav list_con">
+				<div  class="f-l web_nav_left">
+					<span  class="web_n_img f-l"></span>
+						<div  class="web_n_tabs f-l">
+                <a  target="_self"  id="flink_group_0"  href="javascript:void(0);"  class="current">会员单位</a>
+								<a  target="_self"  id="flink_group_1"  href="javascript:void(0);"  class="selected_no">常用连接</a>
+								<a  target="_self"  id="flink_group_2"  href="javascript:void(0);"  class="selected_no">文字连接</a>
+						</div>
+				</div>
+				<div  class="f-l web_nav_right">
+							<div  id="flink_list_0"  class="link_item"  style="">		
+                   		                   														<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=93" target="_blank" title="全国冶金企业第七届离退休管理工作2010（宝钢）年会通讯录">全国冶金企业第七届离退休管理工作2010（宝钢）年会通讯录</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=92" target="_blank" title="中央国家机关离退休经费管理工作第四协作组工作会议与会代表名册">中央国家机关离退休经费管理工作第四协作组工作会议与会代表名册</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=91" target="_blank" title="相关业务部门">相关业务部门</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=90" target="_blank" title="国家宗教事务局离退休干部工作处">国家宗教事务局离退休干部工作处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=89" target="_blank" title="国家物资储备局离退休干部处">国家物资储备局离退休干部处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=88" target="_blank" title="最高人民检察院离退休干部局">最高人民检察院离退休干部局</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=87" target="_blank" title="中国宋庆龄基金会离退休干部处">中国宋庆龄基金会离退休干部处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=86" target="_blank" title="中华全国供销合作总社离退休干部部">中华全国供销合作总社离退休干部部</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=85" target="_blank" title="中国文学艺术联合会离退休干部局">中国文学艺术联合会离退休干部局</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=84" target="_blank" title="中国残疾人联合会离退休干部处">中国残疾人联合会离退休干部处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=83" target="_blank" title="中国科学技术协会离退休干部办公室">中国科学技术协会离退休干部办公室</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=82" target="_blank" title="中国人民对外有好协会离退休办公室">中国人民对外有好协会离退休办公室</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=81" target="_blank" title="国务院三峡办离退休干部处">国务院三峡办离退休干部处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=80" target="_blank" title="国家食品药品监督管理局离退休干部局">国家食品药品监督管理局离退休干部局</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=79" target="_blank" title="国家邮政局公务员管理处">国家邮政局公务员管理处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=78" target="_blank" title="国家测绘局离退休干部处">国家测绘局离退休干部处</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=77" target="_blank" title="国家外国专家局离退休干部办公室">国家外国专家局离退休干部办公室</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=76" target="_blank" title="中国船舶工业离退休干部局">中国船舶工业离退休干部局</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=75" target="_blank" title="中国航天科技集团公司离退休干部工作部">中国航天科技集团公司离退休干部工作部</a></span></li>
+											</div>
+																							<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="http://192.168.1.182/index.php?m=content&c=index&a=show&catid=39&id=74" target="_blank" title="国家国防科技工业局离退休干部局">国家国防科技工业局离退休干部局</a></span></li>
+											</div>
+																													</div>
+							
+							<div  id="flink_list_1"  class="link_item"  style="display: none;">
+								        								        								        <div  class="flink___"><a href="http://mail.tom.com/" title="163-tom" target="_blank"><img src="/uploadfile/2017/0504/20170504100950199.png" width="110"/></a><a  href="http://mail.tom.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">163-tom</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.cctv.com/" title="中央电视台" target="_blank"><img src="/uploadfile/2017/0504/20170504101429644.jpg" width="110"/></a><a  href="http://www.cctv.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">中央电视台</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.sina.com.cn/" title="新浪" target="_blank"><img src="/uploadfile/2017/0504/20170504101832357.png" width="110"/></a><a  href="http://www.sina.com.cn/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">新浪</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.baidu.com/" title="百度搜索" target="_blank"><img src="/uploadfile/2017/0504/20170504101646610.png" width="110"/></a><a  href="http://www.baidu.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">百度搜索</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.sohu.com/" title="搜狐" target="_blank"><img src="/uploadfile/2017/0504/20170504102217710.png" width="110"/></a><a  href="http://www.sohu.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">搜狐</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.southcn.com/" title="南方网" target="_blank"><img src="/uploadfile/2017/0504/20170504102422466.gif" width="110"/></a><a  href="http://www.southcn.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">南方网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://freemail.yeah.net/" title="网易邮箱" target="_blank"><img src="/uploadfile/2017/0504/20170504103049807.png" width="110"/></a><a  href="http://freemail.yeah.net/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">网易邮箱</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.163.com/" title="网易" target="_blank"><img src="/uploadfile/2017/0504/20170504104453926.png" width="110"/></a><a  href="http://www.163.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">网易</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.17173.com/" title="17173" target="_blank"><img src="/uploadfile/2017/0504/20170504104802317.png" width="110"/></a><a  href="http://www.17173.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">17173</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.onlinedown.net/" title="华军软件园" target="_blank"><img src="/uploadfile/2017/0504/20170504105017933.png" width="110"/></a><a  href="http://www.onlinedown.net/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">华军软件园</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.people.com.cn/" title="人民网" target="_blank"><img src="/uploadfile/2017/0504/20170504120513647.png" width="110"/></a><a  href="http://www.people.com.cn/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">人民网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.yesky.com/" title="天极网" target="_blank"><img src="/uploadfile/2017/0504/20170504105643160.png" width="110"/></a><a  href="http://www.yesky.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">天极网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.999.com.cn/index.html" title="三九健康网" target="_blank"><img src="/uploadfile/2017/0504/20170504110009954.png" width="110"/></a><a  href="http://www.999.com.cn/index.html"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">三九健康网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.enet.com.cn/" title="硅谷动力" target="_blank"><img src="/uploadfile/2017/0504/20170504110502826.jpg" width="110"/></a><a  href="http://www.enet.com.cn/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">硅谷动力</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.china.com/" title="中华网" target="_blank"><img src="/uploadfile/2017/0504/20170504110608511.png" width="110"/></a><a  href="http://www.china.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">中华网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.qianlong.com/" title="千龙网" target="_blank"><img src="/uploadfile/2017/0504/20170504110715477.png" width="110"/></a><a  href="http://www.qianlong.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">千龙网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.hao123.com/" title="hao123网址大全" target="_blank"><img src="/uploadfile/2017/0504/20170504111046921.jpg" width="110"/></a><a  href="http://www.hao123.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">hao123网址大全</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.tyfo.com/" title="天虎网" target="_blank"><img src="/uploadfile/2017/0504/20170504111358502.jpg" width="110"/></a><a  href="http://www.tyfo.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">天虎网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.eastday.com/" title="东方网" target="_blank"><img src="/uploadfile/2017/0504/20170504111512216.gif" width="110"/></a><a  href="http://www.eastday.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">东方网</a>
+								        </div>
+								        								        <div  class="flink___"><a href="http://www.tencent.com/zh-cn/index.html" title="腾讯QQ" target="_blank"><img src="/uploadfile/2017/0504/20170504111904759.png" width="110"/></a><a  href="http://www.tencent.com/zh-cn/index.html"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">腾讯QQ</a>
+								        </div>
+								        								        							</div>
+
+							<div  id="flink_list_2"  class="link_item"  style="display: none;">
+								        								        								        <div  class="flink___"><a  href="http://login.live.com/"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">Hotmail</a>
+								        </div>
+								        								        <div  class="flink___"><a  href="http://www.zycg.gov.cn/ggb_ddhy/tiger_list"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">出差定点饭店</a>
+								        </div>
+								        								        							</div>
+				</div>
+			</div>
+
+
+<div class="bk10"></div>
+
+<!--右下角短消息-->
+
+<script>
+		$.ajax({
+		type:'GET',
+		cache: false, //或者设置true
+		url:'http://192.168.1.182/index.php?m=content&c=index&a=getmessage',
+		success:function(msg){
+						//alert(msg);
+						$('#messagenum').html(msg).show();
+						}
+				});					
+</script>
+<div id="messagenum" ></div>
+
+
+<div  id="topic_foot_v2">
+			<div  class="link"></div>
+</div>
+				<div  id="common_bottom_v2">
+	<div  class="info">
+		<div  class="link">
+			
+			<span>版权所有: 冶金离退休干部局</span><br>
+			<span>局办电话: 65133322-</span><br>
+			<span>XX电话: 65133322-</span>
+
+			<div  class="clear"></div>
+		</div>
+		
+		
+		<div  class="link1">
+
+			<span>技术支持: 冶金工业信息中心</span><br>
+			<span>技术支持电话: 65133322-1167</span><br>
+			<span>Powered by <strong style="font-family:Arial;">OA <em>V1.0.1</em> &copy; 2017 </strong></span>
+
+			<div  class="clear"></div>
+		</div>
+	</div>
+</div>		
+<script type="text/javascript">
+$(function(){
+	$(".picbig").each(function(i){
+		var cur = $(this).find('.img-wrap').eq(0);
+		var w = cur.width();
+		var h = cur.height();
+	   $(this).find('.img-wrap img').LoadImage(true, w, h,'/statics/images/msg_img/loading.gif');
+	});
+})
+</script>
+
+
+
+<!--置顶-->
+<script src="/statics/js/top.js"></script>
+<script>
+var current_cateid = "0";
+
+$('ul[txtline]').hover(
+	function(){
+		$('ul[picline]').hide();
+		$('ul[txtline]').show();
+		var index = $(this).hide().attr('txtline');		
+		$('ul[picline="'+index+'"]').show();		
+	}
+);
+
+$('#paihang_block .tips a').hover(
+	function() {
+		var index = $('#paihang_block .tips a').removeClass('cur').index(this);
+		$(this).addClass('cur');
+		$('#paihang_block div.bd').hide().eq(index).show();
+	}
+);
+
+setTimeout(function(){
+    $('.banner_300100').each(function(){
+	if($(this).height() < 20) {
+	    $(this).css("margin",'0 auto 0 auto');
+	}
+    });
+}, 2000);
+$(function(){lazyloadimg({
+    defObj:".videolist"
+});});
+new HeaderNavi({navi:'video', navi2: 'video/list'+current_cateid});
+
+__navi_id = "video";
+</script>
+<script src="/statics/js/topjquery.js" type="text/javascript"></script> 
+<!--置顶结束-->
+<script type="text/javascript" src="/statics/js/steeltube.js"></script> 
+<script type="text/javascript"> 
+$(function() {
+	time();
+});
+</script>
+<script type="text/javascript" src="/statics/js/jquery.spritely.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#clouds').pan({fps: 30, speed: 1, dir: 'left', depth: 10});
+}); 
+</script> 
+<div id="clouds" class="clouds_stage"></div> 
+
+</body>
+</html>
+
+
+
+
+
+<!-- online qq start -->
+<link href="/statics/css/online.css" rel="stylesheet" type="text/css" />
+<script>
+function changeOnline(num) {
+	if (isNaN(num) && num == "")
+		return;
+	for (var i = 1; i <=4 ; i++)
+	{
+		if (i == num)
+		{
+			document.getElementById("onlineSort" + i).className = "online_bar expand";
+			document.getElementById("onlineType" + i).style.display = "block";
+		}
+		else
+		{
+			document.getElementById("onlineSort" + i).className = "online_bar collapse";
+			document.getElementById("onlineType" + i).style.display = "none";
+		}
+	}
+}
+
+$(document).ready(function(){
+  $("#floatShow").bind("click",function(){
+    $('#onlineService').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#onlineService').show(); });$('#floatShow').attr('style','display:none');$('#floatHide').attr('style','display:block');
+	return false;
+  });
+  $("#floatHide").bind("click",function(){
+	$('#onlineService').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#onlineService').hide(); });$('#floatShow').attr('style','display:block');$('#floatHide').attr('style','display:none');
+  });
+  $(document).bind("click",function(event){
+	if ($(event.target).isChildOf("#online_qq_layer") == false)
+	{
+	 $('#onlineService').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#onlineService').hide(); });$('#floatShow').attr('style','display:block');$('#floatHide').attr('style','display:none');
+	}
+  });
+jQuery.fn.isChildAndSelfOf = function(b){
+    return (this.closest(b).length > 0);
+};
+jQuery.fn.isChildOf = function(b){
+    return (this.parents(b).length > 0);
+};
+  //$(window).scroll(function(){ 
+	//$('#online_qq_layer').stop().animate({top:$(document).scrollTop() + $("#online_qq_layer").height()}, 100) 
+  //}); 
+});
+</script>
+<div id="online_qq_layer">
+	<div id="online_qq_tab">
+		<div class="online_icon">
+			<a title id="floatShow" style="display: block;" href="javascript:void(0);">&nbsp;</a>
+			<a title id="floatHide" style="display: none;" href="javascript:void(0);">&nbsp;</a>
+		</div>
+		<!--online_icon end--></div>
+	<div id="onlineService">
+		<div class="online_windows overz">
+			<div class="online_w_top">
+			</div>
+			<!--online_w_top end-->
+			<div class="online_w_c overz">
+				<div class="online_bar expand" id="onlineSort1">
+					<h2><a onclick="changeOnline(1)">网站咨询</a></h2>
+					<div class="online_content overz" id="onlineType1">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes">1597407500</a></li>
+						</ul>
+					</div>
+					<!--online_content end--></div>
+				<!--online_bar end-->
+				<div class="online_bar collapse" id="onlineSort2">
+					<h2><a onclick="changeOnline(2)">刊物咨询</a></h2>
+					<div class="online_content overz" id="onlineType2">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes">1597407500</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--online_bar end-->
+				<div class="online_bar collapse" id="onlineSort3">
+					<h2><a onclick="changeOnline(3)">技术咨询1</a></h2>
+					<div class="online_content overz" id="onlineType3">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=45906623&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=45906623&site=qq&menu=yes">45906623</a></li>
+							<a href="tencent://Message/?Uin=45906623&websiteName=q-zone.qq.com&Menu=yes"><img border="0" SRC="http://wpa.qq.com/pa?p=1:45906623:14" alt="点击这里给我发消息"></a>
+						</ul>
+					</div>
+				</div>
+				<!--online_bar end-->
+				<div class="online_bar collapse" id="onlineSort4">
+					<h2><a onclick="changeOnline(4)">技术咨询2</a></h2>
+					<div class="online_content overz" id="onlineType4">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=18230721&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=18230721&site=qq&menu=yes">18230721</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!--online_bar end--></div>
+			<!--online_w_c end-->
+			<div class="online_w_bottom">
+			</div>
+			<!--online_w_bottom end--></div>
+		<!--online_windows end--></div>
+</div>
+<!-- online qq end -->

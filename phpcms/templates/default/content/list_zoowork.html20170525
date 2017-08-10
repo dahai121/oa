@@ -1,0 +1,80 @@
+{template "content","header"}
+<!--main-->
+<link rel="stylesheet" href="{CSS_PATH}libs/bootstrap.css">
+<link rel="stylesheet" href="{CSS_PATH}libs/bootstrap-responsive.css">
+<link rel="stylesheet" href="{CSS_PATH}libs/jquery.resizableColumns.css">
+<link rel="stylesheet" href="{CSS_PATH}libs/demo.css">
+
+<div class="main">
+	<div class="col-right">
+    	<div class="crumbs"><a href="{siteurl($siteid)}">首页</a><span> > </span>{catpos($catid)} 列表</div>
+    	
+	    <table class="table table-bordered" data-resizable-columns-id="demo-table">
+	      <thead>
+	        <tr>
+	          <th data-resizable-column-id="#">#</th>
+	          <th data-resizable-column-id="first_name">First Name</th>
+	          <th data-resizable-column-id="last_name">Last Name</th>
+	          <th data-resizable-column-id="username" id="username-column" data-noresize>Username</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr>
+	          <td>1</td>
+	          <td>Mark</td>
+	          <td>Otto</td>
+	          <td>@mdo</td>
+	        </tr>
+	        <tr>
+	          <td>2</td>
+	          <td>Jacob</td>
+	          <td>Thornton</td>
+	          <td>@fat</td>
+	        </tr>
+	        <tr>
+	          <td>3</td>
+	          <td colspan="2">Larry the Bird</td>
+	          <td>@twitter</td>
+	        </tr>
+	      </tbody>
+	    </table>
+
+    	{pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}
+        <ul class="list lh24 f14">
+{loop $data $r}
+	<li><span class="rt">{date('Y-m-d H:i:s',$r[inputtime])}</span>·<a href="{$r[url]}" target="_blank"{title_style($r[style])}>{$r[title]}</a></li>
+	{if $n%5==0}<li class="bk20 hr"></li>{/if}
+{/loop}
+        </ul>
+        <div id="pages" class="text-c">{$pages}</div>
+{/pc}
+  </div>
+    <div class="col-auto">
+        <div class="box">
+            <h5 class="title-2">片区工作浏览总排行</h5>
+             {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+            <ul class="content digg">
+				{loop $data $r}
+					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+				{/loop}
+            </ul>
+            {/pc}
+        </div>
+        <div class="bk10"></div>
+
+    </div>
+</div>
+
+<script src="{CSS_PATH}libs/jquery.js"></script>
+<script src="{CSS_PATH}libs/store.js"></script>
+<script src="{CSS_PATH}libs/jquery.resizableColumns.min.js"></script>
+<script>
+
+    $(function(){
+      $("table").resizableColumns({
+        store: store
+      });
+    });
+
+</script>
+{template "content","footer"}

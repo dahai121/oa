@@ -1,0 +1,28 @@
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script src="{JS_PATH}dialog.js"></script>
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<div class="pad_10">
+<form style="border: medium none;" action="{APP_PATH}index.php?m=oattendance&c=index&a=addAtten" method="post" name="myform" id="myform">
+<table cellpadding="2" cellspacing="1" class="table_form" width="100%">
+
+	<tr>
+		<th width="20%">选择类型：</th>
+		<td><select name="atten[attype]" id="attype">
+		{loop $attypelist $key $val}
+		<option value="{$key}">&nbsp;&nbsp;{$val}&nbsp;&nbsp;</option>
+		{/loop}
+		</select></td>
+	</tr>
+	<tr>
+		<th>考勤日期：</th>
+		<td><input type="text" name="atten[attdate]" id="attdate" value="{$selDate}" readonly>
+		</td>
+	</tr>
+	<tr>
+		<th>备注：</th>
+		<td><textarea name="atten[comment]" id="comment" cols="60" rows="1"></textarea></td>
+	</tr>
+	<input style="display:none" type="submit" name="dosubmit" id="dosubmit">
+</table>
+</form>
+</div>

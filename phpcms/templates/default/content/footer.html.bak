@@ -1,0 +1,63 @@
+<div  id="topic_foot_v2">
+			<div  class="link"></div>
+</div>
+{pc:get sql="select content from v9_news_data where id=32"}
+		{loop $data $key $val}
+		{$val[content]}
+		{/loop}
+{/pc}
+
+<script type="text/javascript">
+$(function(){
+	$(".picbig").each(function(i){
+		var cur = $(this).find('.img-wrap').eq(0);
+		var w = cur.width();
+		var h = cur.height();
+	   $(this).find('.img-wrap img').LoadImage(true, w, h,'{IMG_PATH}msg_img/loading.gif');
+	});
+})
+</script>
+
+
+
+<!--ÖÃ¶¥-->
+<script src="{JS_PATH}top.js"></script>
+<script>
+var current_cateid = "0";
+
+$('ul[txtline]').hover(
+	function(){
+		$('ul[picline]').hide();
+		$('ul[txtline]').show();
+		var index = $(this).hide().attr('txtline');		
+		$('ul[picline="'+index+'"]').show();		
+	}
+);
+
+$('#paihang_block .tips a').hover(
+	function() {
+		var index = $('#paihang_block .tips a').removeClass('cur').index(this);
+		$(this).addClass('cur');
+		$('#paihang_block div.bd').hide().eq(index).show();
+	}
+);
+
+setTimeout(function(){
+    $('.banner_300100').each(function(){
+	if($(this).height() < 20) {
+	    $(this).css("margin",'0 auto 0 auto');
+	}
+    });
+}, 2000);
+$(function(){lazyloadimg({
+    defObj:".videolist"
+});});
+new HeaderNavi({navi:'video', navi2: 'video/list'+current_cateid});
+
+__navi_id = "video";
+</script>
+<script src="{JS_PATH}topjquery.js" type="text/javascript"></script> 
+<!--ÖÃ¶¥½áÊø-->
+
+</body>
+</html>

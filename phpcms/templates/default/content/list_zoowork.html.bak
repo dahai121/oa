@@ -1,0 +1,222 @@
+{template "content","header"}
+<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
+<!--main-->
+<div class="main">
+	<!--left_bar-->
+	<div class="col-right">
+		<div class="crumbs">
+			<a href="#">首页</a>
+		<span> &gt; </span>{catpos($catid)}</div>
+
+
+			<!--初始化init-->
+			{php $theurl = "index.php?m=content&c=index&a=lists&catid=$catid";}
+			{php $titlevar = (isset($_GET['title']) ? $_GET['title'] : '');}
+			{php $genrevar = (isset($_GET['genre']) && is_numeric($_GET['genre']) ? $_GET['genre'] : '');}
+
+			<!-- 读取缓存-->
+			{php $modelid_cache = getcache('model_field_'.$modelid,'model');}						<!-- 模型缓存 -->
+
+			<!-- sql_条件-->
+			<?php
+			/**-- 查询的数组 --**/
+			$where = array();
+			if($catid) $where['catid'] = (int) $catid;
+			if($genrevar) $where['genre'] = (int) $genrevar;
+			if($titlevar){
+				$titlesql = " AND title LIKE "."'%".$titlevar."%'";
+			}else{
+				$titlesql = '';
+			}
+			$wheretime = '';
+			if(is_array($_GET)&&count($_GET)>0)//判断是否有Get参数 
+				{ 
+				if(isset($_GET['start_time']))//判断所需要的参数是否存在，isset用来检测变量是否设置，返回true or false 
+				{ 
+				$start_time = $_GET['start_time'];//存在 
+				}else{
+				$start_time = date('Y-m-d',strtotime('-1 year',SYS_TIME));
+				}
+			}
+			if(is_array($_GET)&&count($_GET)>0)//判断是否有Get参数 
+				{ 
+				if(isset($_GET['end_time']))//判断所需要的参数是否存在，isset用来检测变量是否设置，返回true or false 
+				{ 
+				$end_time = $_GET['end_time'];//存在 
+				}else{
+				$end_time = date('Y-m-d',SYS_TIME);
+				}
+			}
+			
+			
+			//$start_time = $_GET['start_time'];
+			//$end_time = $_GET['end_time'];
+			if($_GET['start_time'] && $_GET['end_time']) {
+				$start = strtotime($start_time.' 00:00:00');
+				$end = strtotime($end_time.' 23:59:59');
+				$wheretime .= " AND `inputtime` >= '$start' AND  `inputtime` <= '$end'";	
+			}		
+
+
+			function getwheresql($wheresqlarr) {
+				$result = $comma = '';
+				if(empty($wheresqlarr)) {
+					$result = '1';
+				} elseif(is_array($wheresqlarr)) {
+					foreach ($wheresqlarr as $key => $value) {
+						$result .= $comma.$key.'=\''.$value.'\'';
+						$comma = ' AND ';
+					}
+				} else {
+					$result = $wheresqlarr;
+				}
+				return $result;
+			}
+
+			$wheresql  = getwheresql($where);
+			$wheresql .= $titlesql;
+			$wheresql .= $wheretime;
+			//echo $wheresql;
+			?>
+
+			{php $url=url_par("title=$titlevar&genre=$genrevar",$theurl);}
+			{php $data = explode("\r\n", $modelid_cache['genre']['options']);}
+			{php $genre_arr = Array();}
+			<ul class="tpli">
+				<li class="clr">
+					<span>按分类：</span>
+					{if $genrevar}
+						{if (isset($_GET['start_time']) || isset($_GET['end_time']))}
+						<a href="{url_par("title=$titlevar&start_time=$start_time&end_time=$end_time",$theurl)}">全部</a>
+						{else}
+						<a href="{url_par("title=$titlevar",$theurl)}">全部</a>
+						{/if}
+					{else}
+					<a href="#" class="ac">全部</a>
+					{/if}
+
+					{loop $data $r}
+					{php $r = explode("|",trim($r))}
+					{php $genre_arr[$r[1]] = $r[0];}
+					{if $genrevar == $r[1]}
+					<a href="#" class="ac">{$r[0]}</a>
+					{else}
+						{if (isset($_GET['start_time']) || isset($_GET['end_time']))}
+						<a href='{url_par("title=$titlevar&start_time=$start_time&end_time=$end_time&genre=$r[1]",$theurl)}'>{$r[0]}</a>
+						{else}
+						<a href='{url_par("title=$titlevar&genre=$r[1]",$theurl)}'>{$r[0]}</a>
+						{/if}
+					{/if}
+					{/loop}
+				</li>
+			</ul>
+
+			
+			<form name="myform" method="get" action="">
+	        <ul class="search-form">
+					<!--li><label>按分类:</label--><select name="genre" id="genre" size="1" style="display:none">
+												{loop filters_select('genre',$modelid) $r}
+												{$r[menu]}
+												{/loop}
+					</select></li>
+					<li>
+						<label>标题:</label>
+					<input type="text" name="title" value="{$_GET['title']}"></li>
+
+
+		<li>
+		<label>发布时间:</label>
+   	<link rel="stylesheet" type="text/css" href="{JS_PATH}calendar/jscal2.css"/>
+   	<link rel="stylesheet" type="text/css" href="{JS_PATH}calendar/border-radius.css"/>
+   	<link rel="stylesheet" type="text/css" href="{JS_PATH}calendar/win2k.css"/>
+   	<script type="text/javascript" src="{JS_PATH}calendar/calendar.js"></script>
+   	<script type="text/javascript" src="{JS_PATH}calendar/lang/en.js"></script>
+
+		<input type="text" name="start_time" id="start_time" value="{$start_time}" size="10" class="date" readonly>&nbsp;<script type="text/javascript">
+   		Calendar.setup({
+   		weekNumbers: true,
+		      inputField : "start_time",
+		      trigger    : "start_time", //与input的ID相同
+		      dateFormat: "%Y-%m-%d",
+		      showTime: false,
+		      minuteStep: 1,
+		      onSelect   : function() {this.hide();}
+		   });
+		        </script>-
+		<input type="text" name="end_time" id="end_time" value="{$end_time}" size="10" class="date" readonly>&nbsp;</li><script type="text/javascript">
+		   Calendar.setup({
+		   weekNumbers: true,
+		      inputField : "end_time",
+		      trigger    : "end_time",
+		      dateFormat: "%Y-%m-%d",
+		      showTime: false,
+		      minuteStep: 1,
+		      onSelect   : function() {this.hide();}
+		   });
+		   
+      </script>    
+
+
+
+					<li><div class="btn"><input type="submit" value="搜索" /></div></li>
+					  <input type="hidden" name="m" value="content"> 
+					  <input type="hidden" name="c" value="index"> 
+					  <input type="hidden" name="a" value="lists"> 
+					  <input type="hidden" name="catid" value="{$catid}"> 
+					  <input type="hidden" name="dosubmit" value="1"> 
+			</form>
+			 <li><div class="btn"><input type="button" value="重置" onclick="window.location='{url_par("",$theurl)}';"></div></li>
+			 </ul>
+
+      {php $content_total = $content_tag->count(array('catid'=>$catid,'where'=>$wheresql,'modelid'=>$modelid,'moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));  }
+			<div class="lstnav">
+				<span></span>
+				<span>共找到<strong id="nums">{$content_total}</strong>个符合条件的内容  </span>
+			</div>
+			{php $urlrule = makeurlrule()}
+			
+			{pc:content action="lists"  where="$wheresql" catid="$catid" num="15" order="inputtime DESC" page="$page" moreinfo="1" urlrule="$urlrule"}
+			<div class="box boxsbg">
+				{loop $data $r}
+				<dl class="down_list sysnews">
+					<dt>
+						<h5>
+						<span class="ac">{box('genre',$r[genre],$modelid)}</span>&emsp;<a target="_blank" href="{$r[url]}" title="{$r[title]}">{$r[title]}</a>
+						</h5>
+					</dt>
+					<dd class="down_txt">&emsp;&emsp;{str_cut(strip_tags($r[content]),150)}...<a href="{$r[url]}" title="{$r[title]}" target="_blank">[详细]</a></dd>
+					<div class="bk10"></div>
+					{php $xia = string2array($r['downfiles']);}
+					{loop $xia $d}
+					<span style="color:#F00">相关文件下载:&emsp;</span><a href="{$d[fileurl]}">{$d[filename]}</a>
+					<br />
+					{/loop}
+					<dd class="down_attribute align_r">
+						<span class="icon_4">发布时间：{date('Y-m-d',$r[inputtime])}</span>
+					</dd>
+				</dl>
+
+				{/loop}
+				<!--pages-->
+				<div class="text-c mg_t20" id="pages">{$pages}</div>
+				{/pc}
+			</div>
+		</div>
+		<!--right_bar-->
+    <div class="col-auto">
+        <div class="box">
+            <h5 class="title-2">片区工作浏览总排行</h5>
+             {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+            <ul class="content digg">
+				{loop $data $r}
+					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+				{/loop}
+            </ul>
+            {/pc}
+        </div>
+        <div class="bk10"></div>
+
+    </div>
+	</div>
+	<div class="bk10"></div>
+	{template "content","footer"}

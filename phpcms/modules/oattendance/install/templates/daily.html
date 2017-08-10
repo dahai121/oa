@@ -1,0 +1,117 @@
+{template "content","header"}
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script src="{JS_PATH}dialog.js"></script>
+<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/modules/oattendance/templates/fullcalendar/fullcalendar.css"/>
+<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/modules/oattendance/templates/fullcalendar/fullcalendar.print.css"/>
+<script src='{APP_PATH}phpcms/modules/oattendance/templates/fullcalendar/fullcalendar.js'></script>
+<script type="text/javascript">
+/** calendar配置 **/
+$(document).ready(function() {
+	var date = new Date();
+	$('#calendar').fullCalendar({
+		header : {
+			left : 'prev,next',
+			center : 'title',
+			right : 'today'
+		},
+		titleFormat:{month:'yyyy年MM月  我的考勤'},
+		//weekends: false,
+		aspectRatio: 1.6,
+		/*buttonText: {
+				prev: "<span class='fc-text-arrow'>&lsaquo;上一月</span>",
+				next: "<span class='fc-text-arrow'>下一月&rsaquo;</span>",
+		},*/
+		firstDay:0,
+		editable: false,
+		viewDisplay:function(view){
+			var date =$.fullCalendar.formatDate(view.start,'yyyy-MM-dd');
+			$('#calendar').fullCalendar('removeEvents');
+			var cq=0,cd=0,qj=0,gc=0,gx=0,qq=0;
+			$('#cq').html(cq);
+			$('#qj').html(qj);
+			$('#cd').html(cd);
+			$('#gc').html(gc);
+			$('#gx').html(gx);
+			$('#qq').html(qq);
+			$.post('{APP_PATH}index.php?m=oattendance&c=index&a=ajax_getblist',{seldate:date},
+			function(data){
+				if(typeof data == "underfined" || data == "null" || data == "" || data.length==0){
+					return;
+				}else{
+					var showdata = jQuery.parseJSON(data);
+					$.each(showdata,function(index,term){
+						$('#calendar').fullCalendar('renderEvent',term,true);
+						if(term.className==1)cq++;
+						if(term.className==2)qj++;
+						if(term.className==3)cd++;
+						if(term.className==4)gc++;
+						if(term.className==5)gx++;
+						if(term.className==6)qq++;
+					});
+					$('#cq').html(cq);
+					$('#qj').html(qj);
+					$('#cd').html(cd);
+					$('#gc').html(gc);
+					$('#gx').html(gx);
+					$('#qq').html(qq);
+				}
+			});
+		},
+		/*eventAfterRender:function(event,element,view){
+			event.color = 'red';
+		},*/
+		dayClick: function(date, allDay, jsEvent, view) {
+			var date = $.fullCalendar.formatDate(date,'yyyy-MM-dd');
+			var date2 = date.replace(/(-)/g,"+");
+			$.post('{APP_PATH}index.php?m=oattendance&c=index&a=ajax_isatten',{seldate:date},
+			function(data){
+				if(typeof data == "underfined" || data == "null" || data == "" || data.length==0 || data == "0"){
+					return;
+				}else{
+					window.top.art.dialog({id:'add',iframe:'{APP_PATH}index.php?m=oattendance&c=index&a=addAtten&selDate='+date2, title:'考勤', width:'600', height:'180'}, function(){var d = window.top.art.dialog({id:'add'}).data.iframe;var form = d.document.getElementById('dosubmit');form.click();return false;}, function(){window.top.art.dialog({id:'add'}).close()});
+					void(0);
+				}
+			});
+    	}
+	});
+});
+</script>
+<style>
+#calendar {
+width: 60%;
+height: 50%;
+background: #fff;
+margin:10px auto 10px 50px;
+float: left;
+}
+.calendarWrapper .rightSidePanel {
+width: 200px;
+margin:48px 40px 10px auto;
+color:#000;
+}
+.dib{display: inline-block;}
+.fr{float: right;}
+</style>
+<!--main-->
+<div class="main tps">
+<div class="crumbs"><a href="{siteurl($siteid)}">首页</a><span> &gt; </span> <a href="{APP_PATH}index.php?m=oattendance&c=index&a=init&siteid={$siteid}">个人考勤</a>  </div>
+<div class="vote_result">
+    <div class="calendarWrapper">
+		<div class="rightSidePanel mb50 fr">
+			<div id="div_day_detail" class="h_calendar_alm">
+				<div class="alm_date">考勤统计</div>
+				<div class="alm_content nofestival">
+				<p>出勤天数：<span id="cq" style="color:green;font-weight:bold;"></span></p>
+				<p>迟到天数：<span id="cd" style="color:red;font-weight:bold;"></span></p>
+				<p>请假天数：<span id="qj" style="color:yellow;font-weight:bold;"></span></p>
+				<p>公差天数：<span id="gc" style="color:blue;font-weight:bold;"></span></p>
+				<p>公休天数：<span id="gx" style="color:blue;font-weight:bold;"></span></p>
+				<p>缺勤天数：<span id="qq" style="color:black;font-weight:bold;"></span></p>
+				</div>
+			</div>
+		</div>
+		<div id='calendar'></div>
+        </div>
+    </div>
+</div>
+{template "content","footer"}

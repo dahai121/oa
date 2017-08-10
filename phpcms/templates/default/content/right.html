@@ -1,0 +1,348 @@
+   <div class="content_right">
+      <div class="left_top">
+         <div class="left_top_zuo">
+         		
+
+            <div class="FocusPic">
+            {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="5"}
+            	<div class="content" id="main-slide">
+                    <div class="changeDiv">  
+                    {loop $data $r}
+                        <a href="{$r['url']}" title="{str_cut($r['title'],30)}"><img src="{thumb($r['thumb'],372,242)}" alt="{$r['title']}" width="372" height="242" /></a>
+                    {/loop}
+                    </div>
+                </div>
+            {/pc}
+            </div>
+
+            <div class="scdt">
+               <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="5" return="info"}
+							{else}
+               <div class="list" style="height:260px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+            </div><!--scdt end-->
+            <div class="hyaq">
+               <h1>{$CATEGORYS[23][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="23" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="23" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="23" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+            </div><!--hyaq end-->
+            <div class="ppzs">
+               <h1>{$CATEGORYS[8][catname]}</h1>
+               <div class="list">
+                 <ul>
+                 		{pc:content action="lists" catid="8" num="6" order="inputtime DESC" page="$page"}
+										{loop $data $r}
+										<li><a href="{$r[url]}" title="{$r[title]}"><img src="{thumb($r[thumb],150,112)}" width="101px" height="99px" alt="{$r[title]}"/><span>{str_cut($r[title],15)}</span></a></li>
+										{/loop}
+										{/pc}
+                </ul> 
+               </div><!--list end-->   
+            </div><!--ppzs end-->
+         </div><!--top_left_zuo end-->
+         <div class="left_top_you">
+            <div class="hyyw">
+
+								<script>
+								$(function(){
+								$.ajax({
+								type:'GET',
+								cache: false, //ªÚ’ﬂ…Ë÷√true
+								url:'{siteurl($siteid)}/index.php?m=content&c=index&a=gettztg',
+								success:function(msg){
+												//alert(msg);
+												//console.log(msg);
+												$('#tztginfo').html(msg).show();
+												}
+											});
+								});						
+								</script>
+								<div id="tztginfo" ></div>
+
+            </div><!--hyyw end-->
+            <div class="hyfx">
+                <h1><span>{$CATEGORYS[14][catname]}</span><a class="more" href="" title="">∏¸∂‡>></a></h1>              
+								{pc:content  action="position" posid="10" catid="14" order="listorder DESC" num="1"}
+		        	 	{loop $data $r}
+		        	 	{php $tpbz13=1;}
+		        	 	{if $n==1}                  
+                <div class="list" style="height:252px">
+                  <ul style="padding-top:17px;">    
+                    <li class="li1">
+		               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+		                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></span></p>
+		               	</li>
+		                {/loop}  
+		             		{/pc}
+		            {/if}
+		            {if $tpbz13==1}
+                   		{pc:content  action="lists" catid="14" order="id DESC" num="7" return="info"}
+                   		{loop $info $v}
+												<li style="*margin-top:-8px;_margin-top:-10px;"><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+	                   </ul>										
+					 		  {else} 
+                <div class="list">
+                  <ul>   
+                   		{pc:content  action="lists" catid="14" order="id DESC" num="10" return="info"}
+                   		{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                   </ul>
+                {/if}	
+                </div>
+            </div><!--hyfx end-->
+            <div class="dfdt">
+               <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+            </div><!--dfdt end-->
+            <div class="zhxx">
+               <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+            </div><!--zhxx end-->
+         </div><!--top_left_you end-->
+      </div><!--left_top end-->
+
+      <div class="bk"></div><!--«Â≥˝∏°∂Ø-->
+      <div class="left_center"><script language="javascript" src="{APP_PATH}caches/poster_js/11.js"></script></div><!--left_center end-->
+      <div class="left_under">
+         <div class="left_under_zuo">
+           <div class="mjgf">
+            <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+         </div><!--mjgf end-->
+         <div class="mjgf">
+               <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+           </div><!--mjgf end--> 
+         </div><!--left_under_zuo end-->
+         <div class="left_under_you">
+           <div class="mjgf">
+            <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+           </div><!--tgmj end-->
+           <div class="mjgf">
+            <h1>{$CATEGORYS[13][catname]}</h1>
+							{pc:content  action="position" posid="10" catid="13" order="listorder DESC" num="1"}
+	        	 	{loop $data $r}
+	        	 	{php $tpbz13=1;}
+	        	 	{if $n==1}  
+               <div class="intro">
+               	<a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{thumb($r[thumb],140,113)}" width="140" height="113"/></a>
+               	<h2><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+                <p>{str_cut($r[description],84)}...<span class="red"><a href="{$r[url]}" title="{$r[title]}" target="_blank">[œÍœ∏]</a></p>
+                {/loop}  
+             		{/pc}     
+               </div><!--intro end-->
+              {/if}
+              {if $tpbz13==1}
+               <div class="list">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="6" return="info"}
+							{else}
+               <div class="list" style="height:280px;">
+                  <ul>
+                  		{pc:content  action="lists" catid="13" order="id DESC" num="10" return="info"}
+              {/if}	
+											{loop $info $v}
+												<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+											{/loop}
+											{/pc}
+                  </ul>
+               </div><!--list end-->
+           </div><!--mjgf end-->
+         </div><!--left_under_you end-->
+      </div><!--left_under end-->
+   </div><!--content_right end-->
+   
+   
+   
+<script type="text/javascript"> 
+$(function(){
+	new slide("#main-slide","cur",372,242,1);//Ωπµ„Õº
+	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//≈≈––TAB
+})
+</script>   
+
+<script type="text/javascript" src="{JS_PATH}jquery.tabso_yeso.js"></script>
+<script type="text/javascript" src="{JS_PATH}jquery.tabso_yeso1.js"></script>

@@ -1,0 +1,44 @@
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script src="{JS_PATH}dialog.js"></script>
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<style>
+</style>
+<div class="pad_10">
+<form style="border: medium none;" action="{APP_PATH}index.php?m=oacarmgn&c=index&a=addbook" method="post" name="myform" id="myform">
+<table cellpadding="2" cellspacing="1" class="table_form" width="100%">
+	<tr>
+		<th>预约人：</th>
+		<td><select name="oacarbook[userid]" id="userid">
+		{loop $userlist $key $val}
+		<option value="{$key}">{$val}</option>
+		{/loop}
+		</select></td>
+	</tr>
+	<tr>
+		<th width="20%">车辆名称：</th>
+		<td><select name="oacarbook[carname]" id="carname">
+		{loop $carlist $car}
+		<option value="{$car['carname']}">{$car['carname']}</option>
+		{/loop}
+		</select></td>
+	</tr>
+	<tr>
+		<th>预约日期：</th>
+		<td><input type="text" name="oacarbook[bdate]" id="bdate" value="{$selDate}" readonly>
+		<label><input class="radio" type="radio" value="1" id="btime" name="oacarbook[btime]" checked> 上午</label>
+		<label><input class="radio" type="radio" value="2" id="btime" name="oacarbook[btime]"> 下午</label>
+		<label><input class="radio" type="radio" value="3" id="btime" name="oacarbook[btime]"> 全天</label></p>	
+		</td>
+	</tr>
+	<tr>
+		<th>是否预约司机：</th>
+		<td><input class="radio" type="radio" value="2" id="flag" name="oacarbook[flag]" checked>否<input class="radio" type="radio" value="1" id="flag" name="oacarbook[flag]">是</td>
+	</tr>
+	<tr>
+		<th>事由：</th>
+		<td><textarea name="oacarbook[comment]" id="comment" cols="60" rows="2"></textarea></td>
+	</tr>
+	<input style="display:none" type="submit" name="dosubmit" id="dosubmit">
+</table>
+</form>
+</div>

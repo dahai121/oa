@@ -1,0 +1,84 @@
+{template "content","header"}
+<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
+<!--main-->
+<div class="main">
+	<!--left_bar-->
+	<div class="col-right">
+
+		{php $j=1;}
+		{loop subcat($catid) $v}
+		{php if($v['type']!=0) continue;}
+		<div class="box cat-area" {if $j%2==1}style="margin-right:10px"{/if}>
+			<h5 class="title-1">{$v[catname]}<a href="{$v[url]}" class="more">更多>></a>
+			</h5>
+			<div class="content_pq">
+
+				{pc:content action="lists" catid="$v[catid]" thumb="1" num="1" order="id DESC"}
+				{loop $data $v}
+				{if $v[thumb]}
+				<a href="{$v[url]}" target="_blank">
+					<img src="{thumb($v[thumb],70,60)}" width="70" height="60"/>
+				</a>
+				<p>
+					<strong>
+						<a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title], 30)}</a>
+					</strong>
+					<br />
+				</p>
+				<p>
+					{str_cut($v[description],60,'..')}
+				</p>
+				{/if}
+				{/loop}
+				{/pc}
+
+				{if $v[thumb]}
+				<div class="bk15"></div>
+				<ul class="list  lh24 f14">
+					{pc:content action="lists" catid="$v[catid]" num="5" order="id DESC"}
+					{loop $data $v}
+					<li>
+						<span class="rt">{date('Y-m-d',$v[inputtime])}</span>·<a title="{$v['title']}" href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v['title'],30)}</a>
+					</li>
+					{/loop}
+					{/pc}
+				</ul>
+				{else}
+				<div class="bk2"></div>
+				<ul class="list  lh24 f14">
+					{pc:content action="lists" catid="$v[catid]" num="9" order="id DESC"}
+					{loop $data $v}
+					<li>
+						<span class="rt">{date('Y-m-d',$v[inputtime])}</span>·<a title="{$v['title']}" href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v['title'],30)}</a>
+					</li>
+					{/loop}
+					{/pc}
+				</ul>
+				{/if}
+			</div>
+		</div>
+		{if $j%2==0}<div class="bk10"></div>{/if}
+		{$j++}
+		{/loop}
+
+	</div>
+	<!--right_bar-->
+	<div class="col-auto">
+		<div class="box">
+			<h5 class="title-2">片区工作浏览总排行</h5>
+			{pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+			<ul class="content digg">
+				{loop $data $r}
+				<li>
+					<a href="{$r[url]}" target="_blank">{$r[title]}</a>
+				</li>
+				{/loop}
+			</ul>
+			{/pc}
+		</div>
+		<div class="bk10"></div>
+
+	</div>
+</div>
+<div class="bk10"></div>
+{template "content","footer"}

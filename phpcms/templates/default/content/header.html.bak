@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}default_blue.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}oa.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}dialog_simp.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}jquery.sgallery.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_common.js"></script>
+<script type="text/javascript" src="{JS_PATH}banner1.js"></script>
+<script type="text/javascript" src="{JS_PATH}dialog.js"></script>
+</head>
+<body>
+	
+ <div id="headertube">
+    <div class="top-header"> <span class="f-l setindex"> <a href="javascript:void(null)" onclick="setHome('{siteurl($siteid)}/');">设为首页</a></span> 
+    	<span class="f-l"><s class="date ie6_png32"></s><em id="echoData"></em></span> 
+    	<span class="f-l weather">
+			<iframe width="300" scrolling="no" height="25" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=10&icon=1"></iframe>
+      </span>
+      <span class="f-r dl">
+							<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward=&siteid={get_siteid()}" allowTransparency="true" height="40" frameborder="0" scrolling="no"></iframe>
+			</span>
+    </div>
+</div>
+<div class="body-top"></div>
+
+{if !$catid}
+<script type="text/javascript">
+$(function(){
+	$('#tog').toggle(function(){
+		$(this).animate({top:'333px'},320).addClass("togclose").removeClass("tog").html('<span>关闭</span>');
+		$('.tog_contact').slideDown(320);
+	},function(){
+		$(this).animate({top:'40px'},320).addClass("tog").removeClass("togclose").html('<span>重要信息提示</span>');
+		$('.tog_contact').slideUp(320);
+	})
+});
+</script>
+
+<!-- 代码 开始 -->
+<div class="tog_contact">
+	<div class="t_con_box">
+			<ul class="list">
+					 {pc:content  action="position" posid="2" order="listorder DESC" num="10"}
+        	 {loop $data $v}
+											<li><span class="rt">{date('m-d',$v[inputtime])}</span><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /><div class="catid">{$CATEGORYS[$v['catid']]['catname']}</div><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],46)}</a></span></li>
+           {/loop}  
+           {/pc}   
+			</ul>
+	</div>
+</div>
+<div class="tog" id="tog"><span>重要信息提示</span></div>
+{/if}
+<div class="header">
+   <div class="banner"><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=1"></script></div>
+   <div style="POSITION: relative; WIDTH: 1000px; FLOAT: right"><img src="{IMG_PATH}/banner.png" /></div>    
+</div>    	
+
+   <div class="bk10"></div>
+   <div class="webmenu"> 
+    									<map>
+    									<div class="menu_left"></div>
+								    	{pc:content action="category" catid="0" num="11" siteid="$siteid" order="listorder ASC"}			
+								     	<a {if !$catid} class="menuitem3"{else} class="menuitem" {/if} href="{siteurl($siteid)}">网站首页</a>
+											{loop $data $r}
+											<a {if $r[catid]==$catid} class="menuitem3"{else} class="menuitem" {/if} onfocus="this.blur()" href="{$r[url]}">{$r[catname]}</a>
+											{/loop}
+								      {/pc}
+											{php echo runhook('glogal_menu')}
+											<div class="menu_right"></div>
+											<a class="menuitem2" href="#">企业咨询</a>
+								      </map>
+   </div> 
+
+<div class="clear"></div>

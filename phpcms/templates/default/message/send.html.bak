@@ -1,0 +1,209 @@
+{template 'member', 'header'}
+<link rel="stylesheet" href="<?php echo CSS_PATH?>zTreeStyle/demo.css" type="text/css">
+<link rel="stylesheet" href="<?php echo CSS_PATH?>zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="<?php echo JS_PATH?>jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH?>jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH?>jquery.ztree.excheck-3.5.js"></script>
+	
+<link href="/statics/css/dialog.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="/statics/js/dialog.js"></script>
+<script language="javascript" type="text/javascript" src="/statics/js/content_addtop.js"></script>
+<script type="text/javascript" src="/statics/js/swfupload/swf2ckeditor.js"></script>
+	
+	<SCRIPT type="text/javascript">
+		<!--
+		var setting = {
+			check: {
+				enable: true,
+				chkboxType: {"Y":"", "N":""}
+			},
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				beforeClick: beforeClick,
+				onCheck: onCheck
+			}
+		};
+
+		var zNodes =[
+
+			<?php 
+       $data = bizorder_show_linkage(3376, '', $province, 0);
+		    if (is_array($data) && !empty($data)) {
+					foreach ($data as $d) {
+						//$content=$content."<option value='".$d['linkageid']."'>".$d['title']."</option>";
+						echo "{id:".$d['linkageid'].", pId:0, name:'".$d['title']."', open:true, nocheck:true},";
+						//echo $d['title'];
+						//echo $d['linkageid'];
+						$sql = "SELECT * from v9_member,v9_member_detail WHERE v9_member_detail.dept='".$d['linkageid']."' AND v9_member_detail.userid=v9_member.userid";
+						$this->db->query($sql);			
+						$data = $this->db->fetch_array($sql);
+									foreach($data as $r) {
+										echo "{id: ".$r['userid'].", pId:".$d['linkageid'].", name:'".$r['nickname']."'},";
+										//echo $r['userid'];
+										//echo $r['nickname'];
+									}						
+					}
+				}
+				?>
+
+		 ];
+
+		function beforeClick(treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			zTree.checkNode(treeNode, !treeNode.checked, null, true);
+			return false;
+		}
+		
+		function onCheck(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+			nodes = zTree.getCheckedNodes(true),
+			v = "";
+			n = "";
+			for (var i=0, l=nodes.length; i<l; i++) {
+				v += nodes[i].name + ",";
+				n += nodes[i].id + ",";
+			}
+			if (v.length > 0 ) v = v.substring(0, v.length-1);
+			var cityObj = $("#citySel");
+			var cityObj1 = $("#username");
+			cityObj.attr("value", v);
+			cityObj1.attr("value", n);
+		}
+
+		function showMenu() {
+			var cityObj = $("#citySel");
+			var cityOffset = $("#citySel").offset();
+			$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+
+			$("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#menuContent").fadeOut("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" || event.target.id == "citySel" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+				hideMenu();
+			}
+		}
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		});
+		//-->
+	</SCRIPT>
+<div id="menuContent" class="menuContent" style="display:none; position: absolute;z-index:100;">
+	<ul id="treeDemo" class="ztree" style="margin-top:0; width:180px; height: 300px;"></ul>
+</div>
+<div id="memberArea">
+{template 'member', 'left'}
+<div class="col-auto">
+<div class="col-1 ">
+<h6 class="title">发送短消息</h6>
+<div class="content">
+<form name="myform" action="{APP_PATH}index.php?m=message&c=index&a=send" method="post" id="myform">
+<table width="100%" cellspacing="0" class="table_form">
+
+			<tr>
+				<th>收信人：</th>
+				<td>
+					<input id="citySel" type="text" readonly value="" style="width:300px;" onclick="showMenu();" />
+					<input name="info[send_to_id]" id="username" type="text" readonly value="" style="width:100px;" />
+					&nbsp;<a id="menuBtn" href="#" onclick="showMenu(); return false;">select</a>&nbsp;&nbsp;<span class="highlight_red">勾选 checkbox 或者 点击节点 进行选择</span>
+				</td>
+		 </tr>
+
+     <tr>
+       <th>标 题：</th>
+       <td><input name="info[subject]" type="text" id="subject" size="30" value=""  class="input-text"/></td>
+     </tr>  
+     <tr>
+       <th>内 容：</th>
+       <td><textarea name="info[content]"  id="con" rows="5" cols="50"></textarea></td>
+     </tr>
+     
+		<?php 
+		$authkey = upload_key('10,rar|zip|html|htm|doc|docx|pdf,1');
+		//echo $authkey;
+		?>      
+		 <tr>
+						<th width="100"> 附件上传：</th> 
+						<td><input name="info[downfiles]"  value="1">
+						<fieldset class="blue pad-10">
+        		<legend>文件列表</legend><ul id="downfiles" class="picList"></ul>
+						</fieldset>
+						<div class="bk10"></div>
+						<input type="button"  class="button" value="多文件上传" onclick="javascript:flashupload('downfiles_multifile', '附件上传','downfiles',change_multifile,'10,rar|zip|html|htm|doc|docx|pdf,1','content','6','<?php echo $authkey ?>')"/>    <input type="button" class="button" value="添加远程地址" onclick="add_multifile('downfiles')"></td>
+		 </tr>
+
+     <tr>
+       <th>验证码：</th>
+       <td><input name="code" type="text" id="code" size="10"  class="input-text"/> {form::checkcode('code_img','4','14',110,30)}</td>
+     </tr>
+     <tr>
+       <td></td>
+       <td colspan="2"><label>
+         <input type="submit" name="dosubmit" id="dosubmit" value="确 定" class="button"/>
+         </label></td>
+     </tr>
+   </table>
+   </form>
+   </div>
+   <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+   </div>
+   </div>
+</div>
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#subject").formValidator({onshow:"请输入标题",onfocus:"标题不能为空"}).inputValidator({min:1,max:999,onerror:"标题不能为空"});
+	$("#con").formValidator({onshow:"请输入内容",onfocus:"内容不能为空"}).inputValidator({min:1,max:999,onerror:"内容不能为空"});
+	//$("#username").formValidator({onshow:"请填写收信人",onfocus:"收信人不能为空"}).inputValidator({min:1,onerror:"请输入收件人ID"}).ajaxValidator({type : "get",url : "",data :"m=message&c=index&a=public_name",datatype : "html",async:'false',success : function(data){if( data == 1 ){return true;}else{return false;}},buttons: $("#dosubmit"),onerror : "禁止给自己或非注册用户发送消息! ",onwait : "正在链接中...."});
+	
+	$("#code").formValidator({onshow:"请输入验证码",onfocus:"验证码不能为空"}).inputValidator({min:1,max:999,onerror:"验证码不能为空"}).ajaxValidator({
+	    type : "get",
+		url : "",
+		data :"m=pay&c=deposit&a=public_checkcode",
+		datatype : "html",
+		async:'false',
+		success : function(data){	
+            if(data == 1)
+			{
+                return true;
+			}
+            else
+			{
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "验证码错误",
+		onwait : "验证中"
+	});
+})
+
+$(function(){
+	$(".payment-show").each(function(i){
+		if(i==0){
+			$(this).addClass("payment-show-on");
+		}
+   		$(this).click(
+			function(){
+				$(this).addClass("payment-show-on");
+				$(this).siblings().removeClass("payment-show-on");
+			}
+		)
+ 	});
+	
+})
+//-->
+</script>
+{template 'member', 'footer'}

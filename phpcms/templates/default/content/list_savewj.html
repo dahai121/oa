@@ -1,0 +1,300 @@
+{template "content","header"}
+<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
+
+<!--main-->
+<div class="main">
+	<!--left_bar-->
+	<div class="col-right">
+		<div class="crumbs">
+			<a href="#">首页</a>
+		<span> &gt; </span>{catpos($catid)}</div>
+
+
+			<!--初始化init-->
+			{php $theurl = "index.php?m=content&c=index&a=lists&catid=$catid";}
+			{php $titlevar = (isset($_GET['title']) ? $_GET['title'] : '');}
+			{php $jnumbervar = (isset($_GET['jnumber']) ? $_GET['jnumber'] : '');}
+			{php $genrevar = (isset($_GET['genre']) && is_numeric($_GET['genre']) ? $_GET['genre'] : '');}
+			{php $shuxvar = (isset($_GET['shux']) && is_numeric($_GET['shux']) ? $_GET['shux'] : '');}
+			{php $deadlinevar = (isset($_GET['deadline']) && is_numeric($_GET['deadline']) ? $_GET['deadline'] : '');}
+			{php $ljofficevar = (isset($_GET['ljoffice']) && is_numeric($_GET['ljoffice']) ? $_GET['ljoffice'] : '');}
+			{php $ynumbervar = (isset($_GET['ynumber']) && is_numeric($_GET['ynumber']) ? $_GET['ynumber'] : '');}
+
+			<!-- 读取缓存-->
+			{php $modelid_cache = getcache('model_field_'.$modelid,'model');}						<!-- 模型缓存 -->
+
+			<!-- sql_条件-->
+			<?php
+			/**-- 查询的数组 --**/
+			$where = array();
+			if($catid) $where['catid'] = (int) $catid;
+			if($genrevar) $where['genre'] = (int) $genrevar;
+			if($shuxvar) $where['shux'] = $shuxvar;
+			if($deadlinevar) $where['deadline'] = $deadlinevar;
+			if($ljofficevar) $where['ljoffice'] = $ljofficevar;
+			if($ynumbervar) $where['ynumber'] = $ynumbervar;
+			if($titlevar){
+				$titlesql = " AND title LIKE "."'%".$titlevar."%'";
+			}else{
+				$titlesql = '';
+			}
+			if($jnumbervar){
+				$jnumbersql = " AND jnumber LIKE "."'%".$jnumbervar."%'";
+			}else{
+				$jnumbersql = '';
+			}
+
+
+			function getwheresql($wheresqlarr) {
+				$result = $comma = '';
+				if(empty($wheresqlarr)) {
+					$result = '1';
+				} elseif(is_array($wheresqlarr)) {
+					foreach ($wheresqlarr as $key => $value) {
+						$result .= $comma.$key.'=\''.$value.'\'';
+						$comma = ' AND ';
+					}
+				} else {
+					$result = $wheresqlarr;
+				}
+				return $result;
+			}
+
+			$wheresql  = getwheresql($where);
+			$wheresql .= $titlesql;
+			$wheresql .= $jnumbersql;
+			//echo $wheresql;
+			?>
+
+			{php $url=url_par("title=$titlevar&genre=$genrevar&jnumber=$jnumbervar&shux=$shuxvar&deadline=$deadlinevar&ljoffice=$ljofficevar&ynumber=$ynumbervar",$theurl);}
+
+
+			{php $data = explode("\r\n", $modelid_cache['ljoffice']['options']);}
+			{php $ljoffice_arr = Array();}
+			<ul class="tpli">
+				<li class="clr">
+					<span>按处室：</span>
+					{if $ljofficevar}
+					<a href="{url_par("title=$titlevar&jnumber=$jnumbervar&genre=$genrevar&shux=$shuxvar&deadline=$deadlinevar",$theurl)}">全部</a>
+					{else}
+					<a href="#" class="ac">全部</a>
+					{/if}
+
+					{loop $data $r}
+					{php $r = explode("|",trim($r))}
+					{php $ljoffice_arr[$r[1]] = $r[0];}
+					{if $ljofficevar == $r[1]}
+					<a href="#" class="ac">{$r[0]}</a>
+					{else}
+					<a href='{url_par("title=$titlevar&genre=$genrevar&jnumber=$jnumbervar&shux=$shuxvar&deadline=$deadlinevar&ljoffice=$r[1]&ynumber=$ynumbervar",$theurl)}'>{$r[0]}</a>
+					{/if}
+					{/loop}
+				</li>
+			</ul>
+			{php $data = explode("\r\n", $modelid_cache['genre']['options']);}
+			{php $genre_arr = Array();}
+			<ul class="tpli">
+				<li class="clr">
+					<span>按分类：</span>
+					{if $genrevar}
+					<a href="{url_par("title=$titlevar&jnumber=$jnumbervar&shux=$shuxvar&deadline=$deadlinevar&ljoffice=$ljofficevar",$theurl)}">全部</a>
+					{else}
+					<a href="#" class="ac">全部</a>
+					{/if}
+
+					{loop $data $r}
+					{php $r = explode("|",trim($r))}
+					{php $genre_arr[$r[1]] = $r[0];}
+					{if $genrevar == $r[1]}
+					<a href="#" class="ac">{$r[0]}</a>
+					{else}
+					<a href='{url_par("title=$titlevar&genre=$r[1]&jnumber=$jnumbervar&shux=$shuxvar&deadline=$deadlinevar&ljoffice=$ljofficevar&ynumber=$ynumbervar",$theurl)}'>{$r[0]}</a>
+					{/if}
+					{/loop}
+				</li>
+			</ul>
+
+			{php $data1 = explode("\r\n", $modelid_cache['shux']['options']);}
+			{php $shux_arr = Array();}
+			<ul class="tpli">
+				<li class="clr">
+					<span>按属性：</span>
+					{if $shuxvar}
+					<a href="{url_par("title=$titlevar&jnumber=$jnumbervar&genre=$genrevar&deadline=$deadlinevar&ljoffice=$ljofficevar",$theurl)}">全部</a>
+					{else}
+					<a href="#" class="ac">全部</a>
+					{/if}
+
+					{loop $data1 $r}
+					{php $r = explode("|",trim($r))}
+					{php $shux_arr[$r[1]] = $r[0];}
+
+					{if $shuxvar == $r[1]}
+					<a href="#" class="ac">{$r[0]}</a>
+					{else}
+					<a href='{url_par("title=$titlevar&genre=$genrevar&jnumber=$jnumbervar&shux=$r[1]&deadline=$deadlinevar&ljoffice=$ljofficevar&ynumber=$ynumbervar",$theurl)}'>{$r[0]}</a>
+					{/if}
+					{/loop}
+				</li>
+			</ul>
+
+
+			{php $data = explode("\r\n", $modelid_cache['deadline']['options']);}
+			{php $deadline_arr = Array();}
+			<ul class="tpli">
+				<li class="clr">
+					<span>按期限：</span>
+
+					{if $deadlinevar}
+					<a href="{url_par("title=$titlevar&jnumber=$jnumbervar&genre=$genrevar&shux=$shuxvar&ljoffice=$ljofficevar",$theurl)}">全部</a>
+					{else}
+					<a href="#" class="ac">全部</a>
+					{/if}
+
+					{loop $data $r}
+					{php $r = explode("|",trim($r))}
+					{php $deadline_arr[$r[1]] = $r[0];}
+					{if $deadlinevar == $r[1]}
+					<a href="#" class="ac">{$r[0]}</a>
+					{else}
+					<a href='{url_par("title=$titlevar&genre=$genrevar&jnumber=$jnumbervar&shux=$shuxvar&deadline=$r[1]&ljoffice=$ljofficevar&ynumber=$ynumbervar",$theurl)}'>{$r[0]}</a>
+					{/if}
+					{/loop}
+				</li>
+			</ul>
+
+			<form name="myform" method="get" action="">
+				<ul class="search-form">
+					<!--li>
+					<label>按分类:</label-->
+					<select name="genre" id="genre" size="1" style="display:none">
+						{loop filters_select('genre',$modelid) $r}
+						{$r[menu]}
+						{/loop}
+					</select>
+				</li>
+
+				<select name="shux" id="shux" size="1" style="display:none">
+					{loop filters_select('shux',$modelid) $r}
+					{$r[menu]}
+					{/loop}
+				</select>
+			</li>
+
+
+			<select name="deadline" id="deadline" size="1" style="display:none">
+				{loop filters_select('deadline',$modelid) $r}
+				{$r[menu]}
+				{/loop}
+			</select>
+		</li>
+
+		<select name="ljoffice" id="ljoffice" size="1" style="display:none">
+			{loop filters_select('ljoffice',$modelid) $r}
+			{$r[menu]}
+			{/loop}
+		</select>
+	</li>
+
+	<li>
+		<label>年号:</label>
+		<select name="ynumber" id="ynumber" size="1" >
+			{loop filters_select('ynumber',$modelid) $r}
+			{$r[menu]}
+			{/loop}
+		</select>
+	</li>
+
+	<li>
+		<label>标题:</label>
+	<input type="text" name="title" value="{$_GET['title']}"></li>
+	<li>
+		<label>卷号:</label>
+	<input type="text" name="jnumber" size="10" value="{$_GET['jnumber']}"></li>
+	<li><div class="btn"><input type="submit" value="搜索" /></div></li>
+	<input type="hidden" name="m" value="content">
+	<input type="hidden" name="c" value="index">
+	<input type="hidden" name="a" value="lists">
+	<input type="hidden" name="catid" value="{$catid}">
+	<input type="hidden" name="dosubmit" value="1">
+	</form>
+	<li><div class="btn"><input type="button" value="重置" onclick="window.location='{url_par("",$theurl)}';"></div></li>
+	</ul>
+
+{php $content_total = $content_tag->count(array('catid'=>$catid,'where'=>$wheresql,'modelid'=>$modelid,'moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));  }
+
+<div class="lstnav">
+	<span></span>
+	<span>共找到<strong id="nums">{$content_total}</strong>个符合条件的内容  </span>
+</div>
+{php $urlrule = makeurlrule()}
+
+{pc:content action="lists" where="$wheresql" catid="$catid" num="15" order="inputtime DESC" page="$page" moreinfo="1" urlrule="$urlrule"}
+<div class="box boxsbg">
+	{loop $data $r}
+	<dl class="down_list sysnews">
+
+
+			<h5>
+				标题:<a target="_blank" href="{$r[url]}" title="{$r[title]}">{$r[title]}</a>
+			</h5>
+
+			<h7>
+				年号:{$r[ynumber]}&emsp;卷号:{$r[jnumber]}&emsp;类型:{box('genre',$r[genre],$modelid)}&emsp;期限:{box('deadline',$r[deadline],$modelid)}&emsp;立卷处室:{box('ljoffice',$r[ljoffice],$modelid)}&emsp;属性:{box('shux',$r[shux],$modelid)}&emsp;
+			</h7>
+
+		<div class="bk10"></div>
+		<dd class="down_txt">&emsp;&emsp;{$r[description]}</dd>
+		<div class="bk10"></div>
+		{if $r[beiz]}
+		<dd class="down_txt">&emsp;&emsp;备注:{$r[beiz]}</dd>
+		{/if}
+		<div class="bk10"></div>
+		{php $xia = string2array($r['downfile']);}
+		{loop $xia $d}
+		<span style="color:#F00">相关文件下载:&emsp;</span>
+		<a href="{$d[fileurl]}">{$d[filename]}</a>
+		<br />
+		{/loop}
+		<dd class="down_attribute align_r">
+			<span class="icon_4">发布时间：{date('Y-m-d',$r[inputtime])}</span>
+		</dd>
+	</dl>
+	{/loop}
+
+	<!--pages-->
+	<div class="text-c mg_t20" id="pages">{$pages}</div>
+	{/pc}
+</div>
+</div>
+<!--right_bar-->
+<div class="col-auto">
+	<div class="box">
+		<h5 class="title-2">下载排行</h5>
+		<ul class="content digg">
+			{pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+			{loop $data $r}
+			<li>
+				<a href="{$r[url]}" target="_blank">{str_cut($r[title],34)}</a>
+			</li>
+			{/loop}
+			{/pc}
+		</ul>
+	</div>
+	<div class="bk10"></div>
+	<div class="box">
+		<h5 class="title-2">推荐下载</h5>
+		<ul class="content digg">
+			{pc:content  action="position" posid="5" order="listorder DESC" num="4"}
+			{loop $data $r}
+			<li>
+				<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],34)}</a>
+			</li>
+			{/loop}
+			{/pc}
+		</ul>
+	</div>
+</div>
+</div>
+<div class="bk10"></div>
+{template "content","footer"}

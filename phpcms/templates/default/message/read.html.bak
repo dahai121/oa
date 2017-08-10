@@ -1,0 +1,121 @@
+{template 'member', 'header'}
+<style>
+/*20130714 后台标签时间*/
+.htbqsj{background:#5a85b2; border:1px solid #5a85b2; color:#fff; padding:0 3px; margin-right:10px;}
+button.aui_state_highlight { color: #FFF; border: solid 1px #3399dd; background: #2288cc; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bbee', endColorstr='#2288cc'); background: linear-gradient(top, #33bbee, #2288cc); background: -moz-linear-gradient(top, #33bbee, #2288cc); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#33bbee), to(#2288cc)); text-shadow: -1px -1px 1px #1c6a9e; }
+button.aui_state_highlight:hover { color:#FFF; border-color:#1c6a9e; }
+button.aui_state_highlight:active { border-color:#1c6a9e; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bbee', endColorstr='#2288cc'); background: linear-gradient(top, #33bbee, #2288cc); background: -moz-linear-gradient(top, #33bbee, #2288cc); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#33bbee), to(#2288cc)); }
+.aui_state_highlight{padding: 6px 12px;cursor: pointer;display: inline-block;text-align: center;line-height: 1;letter-spacing: 2px;font-family: Tahoma, Arial/9!important;width: auto;overflow: visible;color: #fff;border: solid 1px #3399dd;border-radius: 5px;background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#33bbee), to(#2288cc));text-shadow: -1px -1px 1px #1c6a9e;box-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0 -1px 0 rgba(0, 0, 0, .09);}
+</style>
+
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#subject").formValidator({empty:true,onshow:"标题，可以为空",onfocus:"请输入标题",oncorrect:"输入正确！",onempty:"不填替标题了吗？"}).inputValidator({min:1,onerror:"请输入标题"});
+	$("#con").formValidator({onshow:"请输入内容",onfocus:"内容不能为空"}).inputValidator({min:1,max:999,onerror:"内容不能为空"});
+	$("#code").formValidator({onshow:"请输入验证码",onfocus:"验证码不能为空"}).inputValidator({min:1,max:999,onerror:"验证码不能为空"}).ajaxValidator({
+	    type : "get",
+		url : "",
+		data :"m=pay&c=deposit&a=public_checkcode",
+		datatype : "html",
+		async:'false',
+		success : function(data){	
+            if(data == 1)
+			{
+                return true;
+			}
+            else
+			{
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "验证码错误",
+		onwait : "验证中"
+	});
+})
+
+
+
+//-->
+</script>
+<div id="memberArea">
+{template 'member', 'left'}
+{php $userid = get_memberinfo_buyusername($infos['send_id'],userid)}
+{php $nickname = get_memberinfo_buyusername($infos['send_id'],nickname)}
+{php $user_pic = get_memberavatar($userid,1,45);}
+<div class="col-auto">
+<div class="col-1 ">
+<h6 class="title">与  {if !$nickname}{$infos['send_id']}{else}{$nickname}{/if} 的短消息记录</h6>
+<div class="content">
+<form name="myform" action="?m=message&c=index&a=reply" method="post" id="myform">
+<table width="100%" cellspacing="0" class="table_form">
+
+     <tr>
+       <th><div align=center><img src="{$user_pic}" width="50" height="50" onerror="this.src='{IMG_PATH}member/nophoto.gif'"><br><font color=red>{if !$nickname}{$infos['send_id']}{else}{$nickname}{/if}</font></div></th>
+       <td>{$infos['subject']} - {date('Y-m-d H:i:s',$infos['message_time'])}<br><br>{$infos['content']}</td>
+     </tr>
+     
+     {loop $reply_infos $reply_info}  
+     {php $userid = get_memberinfo_buyusername($reply_info['send_id'],userid)}
+     {php $reply_nickname = get_memberinfo_buyusername($reply_info['send_id'],nickname)}
+     {php $user_pic = get_memberavatar($userid,1,45);}
+      <tr>
+       <th><div align=center><img src="{$user_pic}" width="50" height="50" onerror="this.src='{IMG_PATH}member/nophoto.gif'"></img><br>{if !$reply_nickname}{$reply_info['send_id']}{else}{$reply_nickname}{/if}</div></th>
+       <td>{$reply_info['subject']} - {date('Y-m-d H:i:s',$reply_info['message_time'])}<br><br></br>{$reply_info['content']}</td>
+     </tr> 
+     {/loop}
+     
+     
+         </label></td>
+     </tr>
+   </table>
+   </form>
+   </div>
+   <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+   </div>
+<div class="bk10"></div>
+{if $infos['send_id']!='SYSTEM'}
+<div class="col-1 ">
+<h5 class="title">回复此消息 </h5>
+<div class="content">
+
+<form name="myform" action="?m=message&c=index&a=reply" method="post" id="myform">
+<table width="100%" cellspacing="0" class="table_form">
+<tr>
+<th>标 题：</th>
+<td><input name="info[subject]" type="text" id="subject" size="30" value="Re: {$infos[subject]}"  class="input-text"/></td>
+</tr> 
+<tr>
+<th>内 容：</th>
+<td><textarea name="info[content]"  id="con" rows="5" cols="50"></textarea>
+<div class="bk10"></div>
+<input type="button" class="htbqsj" value="已收到" onclick="insertText(document.getElementById('con'),'已收到')">
+<input type="button" class="htbqsj" value="同意" onclick="insertText(document.getElementById('con'),'同意')">
+<input type="button" class="htbqsj" value="请执行" onclick="insertText(document.getElementById('con'),'请执行')">
+<input type="button" class="htbqsj" value="请考虑" onclick="insertText(document.getElementById('con'),'请考虑')">
+</td>
+</tr>
+<input type="hidden" name="info[replyid]" value="{$infos['messageid']}" /> 
+<input type="hidden" name="info[send_to_id]" value="{$infos['send_id']}" /> 
+<tr>
+<th>验证码：</th>
+<td><input name="code" type="text" id="code" size="10"  class="input-text"/> {form::checkcode('code_img','4','14',110,30)}</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2"><label>
+<input type="submit" name="dosubmit" id="dosubmit" value="确 定" class="button"/>
+</label></td>
+</tr>
+</table>
+</form>
+
+</div>
+<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+</div>
+  {/if}
+   </div>
+</div> 
+{template 'member', 'footer'}

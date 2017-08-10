@@ -1,0 +1,82 @@
+{template 'member', 'header'}
+<script language="javascript" type="text/javascript" src="{JS_PATH}admin_common.js"></script> 
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" /> 
+<script language="javascript" type="text/javascript" src="{JS_PATH}dialog.js"></script>
+<div id="memberArea">
+{template 'member', 'left'}
+<div class="col-auto">
+<div class="col-1 ">
+<h6 class="title">共享文件夹</h6>
+<div class="content"> 
+<form name="myform" id="myform" action="{APP_PATH}index.php?m=message&c=index&a=delete" method="post" onsubmit="checkuid();return false;">
+<table width="100%" cellspacing="0"  class="table-list">
+        <thead>
+            <tr>
+            <th width="5%">ID</th>
+            <th width="55%">标 题</th>
+            <th width="20%">发布人</th>
+            <th width="20%">更新时间</th>
+            </tr>
+        </thead>
+    <tbody>
+	{loop $infos $r} 
+	<tr>
+	<td align='center' ><?php echo $r['id'];?></td>
+		<td>
+		<?php
+			if($r['islink']) {
+				echo '<a href="'.$r['url'].'" target="_blank">';
+			} elseif(strpos($r['url'],'http://')!==false) {
+				echo '<a href="'.$r['url'].'" target="_blank">';
+			} else {
+				echo '<a href="'.$release_siteurl.$r['url'].'" target="_blank">';
+			}
+		?>
+		<span<?php echo title_style($r['style'])?>><?php echo $r['title'];?></span></a> <?php if($r['thumb']!='') {echo '<img src="'.IMG_PATH.'icon/small_img.gif" title="'.L('thumb').'">'; } if($r['posids']) {echo '<img src="'.IMG_PATH.'icon/small_elite.gif" title="'.L('elite').'">';} if($r['islink']) {echo ' <img src="'.IMG_PATH.'icon/link.png" title="'.L('islink_url').'">';}?></td>
+		<td align='center'>
+		<?php
+		if($r['sysadd']==0) {
+			echo $r['username']; 
+			echo '<img src="'.IMG_PATH.'icon/contribute.png" title="'.L('member_contribute').'">';
+		} else {
+			echo $r['username'];
+		}
+		?></td>
+		<td align='center'><?php echo format::date($r['updatetime'],1);?></td>
+	</tr>
+	{/loop}
+	
+    </tbody>
+    </table>
+<div class="btn">&nbsp;&nbsp;</div> 
+
+</form>   
+
+<div id="pages">{$pages}</div>
+</div>
+<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+function read(id, name) {
+	window.top.art.dialog({id:'sell_all'}).close();
+	window.top.art.dialog({title:'查看详情'+name+' ',id:'edit',iframe:'?m=message&c=index&a=read&messageid='+id,width:'700',height:'450'}, function(){var d = window.top.art.dialog({id:'see_all'}).data.iframe;var form = d.document.getElementById('dosubmit');form.click();return false;}, function(){window.top.art.dialog({id:'see_all'}).close()});
+}
+function checkuid() {
+	var ids='';
+	$("input[name='messageid[]']:checked").each(function(i, n){
+		ids += $(n).val() + ',';
+	});
+	if(ids=='') {
+		window.top.art.dialog({content:'请选择再执行操作',lock:true,width:'200',height:'50',time:1.5},function(){});
+		return false;
+	} else {
+		myform.submit();
+	}
+}
+
+</script>
+{template 'member', 'footer'}
+

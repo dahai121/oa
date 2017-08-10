@@ -1,0 +1,49 @@
+{template "content","header"}
+<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
+<div class="main">
+	<!--left_bar-->
+	<div class="col-right">
+    <div class="crumbs"><a href="{siteurl($siteid)}">首页</a><span> &gt; </span>{catpos($catid)}{$title}</div>
+        <div class="box boxsbg">
+        	<div class="contents">
+      <table cellspacing="1" cellpadding="0" align="center" class="down_info">
+        <caption>
+        <h5>{$title}</h5>
+        </caption></table>
+      <div class="down_intro">{$content}</div>
+      <h5 class="tit">附件下载</h5>
+      <div class="down_address divl wrap">
+        	<ul class="l xz_a wrap blue">
+			{loop $downfile $r}
+	        	<li>{$r}</li>
+			{/loop}
+			{loop $downfiles $r}
+	        	<li>{$r}</li>
+			{/loop}			
+        	</ul>
+        <div class="ad"><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=12"></script></div>
+      </div>
+	  </div>
+	              </div>
+      <div class="bk10"></div>
+
+    </div>
+    <!--right_bar-->
+    <div class="col-auto">
+        <div class="box">
+            <h5 class="title-2">{$CAT[catname]}浏览排行</h5>
+            <ul class="content digg">
+			{pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+				{loop $data $r}
+					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+				{/loop}
+			{/pc}
+            </ul>
+        </div>
+        <div class="bk10"></div>
+    </div>
+</div>
+
+<div class="bk10"></div>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+{template "content","footer"}

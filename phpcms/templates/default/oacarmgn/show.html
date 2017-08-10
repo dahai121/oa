@@ -1,0 +1,100 @@
+{template "content","header"}
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script src="{JS_PATH}dialog.js"></script>
+<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/modules/oacarmgn/templates/fullcalendar/fullcalendar.css"/>
+<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/modules/oacarmgn/templates/fullcalendar/fullcalendar.print.css"/>
+<script src='{APP_PATH}phpcms/modules/oacarmgn/templates/fullcalendar/fullcalendar.js'></script>
+<script type="text/javascript">
+/** calendar配置 **/
+$(document).ready(function() {
+	var date = new Date();
+	$('#calendar').fullCalendar({
+		header : {
+			left : 'prev,next',
+			center : 'title',
+			right : 'today'
+		},
+		titleFormat:{month:'yyyy年MM月  公车预约'},
+		//weekends: false,
+		aspectRatio: 1.6,
+		editable: false,
+		firstDay:0,//每行第一天为周日
+		//events: {$event_data},
+		viewDisplay:function(view){
+			var date =$.fullCalendar.formatDate(view.start,'yyyy-MM-dd');
+			$('#calendar').fullCalendar('removeEvents');
+			$('#yyr').html('');
+			$('#yycl').html('');
+			$('#yysj').html('');
+			$('#bz').html('');
+			$.post('{APP_PATH}index.php?m=oacarmgn&c=index&a=ajax_getblist',{seldate:date},
+			function(data){
+				if(typeof data == "underfined" || data == "null" || data == "" || data.length==0){
+					return;
+				}else{
+					var showdata = jQuery.parseJSON(data);
+					$.each(showdata,function(index,term){
+						$('#calendar').fullCalendar('renderEvent',term,true);
+					});
+				}
+			});
+		},
+		dayClick: function(date, allDay, jsEvent, view) {
+			var date =$.fullCalendar.formatDate(date,'yyyy-MM-dd');
+			var curdate =$.fullCalendar.formatDate(new Date(),'yyyy-MM-dd');
+			if(curdate>date){
+				alert("请选择晚于"+curdate+"的日期预约!");
+				return;
+			}
+			var selDate = date.replace(/(-)/g,"+");
+			window.top.art.dialog({id:'add',iframe:'{APP_PATH}index.php?m=oacarmgn&c=index&a=addbook&selDate='+selDate, title:'预约公车', width:'600', height:'240'}, function(){var d = window.top.art.dialog({id:'add'}).data.iframe;var form = d.document.getElementById('dosubmit');form.click();return false;}, function(){window.top.art.dialog({id:'add'}).close()});
+			void(0);
+    	},
+		eventClick: function(calEvent, jsEvent, view){
+			var str = calEvent.className;
+			var arr2 = calEvent.title.split(" ");
+			var date = $.fullCalendar.formatDate(calEvent.start,'yyyy-MM-dd');
+			$('#yyr').html(str[0]);
+			$('#yycl').html(arr2[0]);
+			$('#yysj').html(date+" "+arr2[1]);
+			$('#bz').html(str[1]);
+		}
+	});
+});
+</script>
+<style>
+#calendar {
+width: 73%;
+background: #fff;
+margin:10px auto 10px 30px;
+float: left;
+}
+.calendarWrapper .rightSidePanel {
+width: 170px;
+margin:48px 20px 10px auto;
+color:#000;
+}
+.dib{display: inline-block;}
+.fr{float: right;}
+.alm_content p{margin-left:10px;font-color:#000;text-align:left;}
+</style>
+<div class="main tps">
+<div class="crumbs"><a href="{siteurl($siteid)}">首页</a><span> &gt; </span> <a href="{APP_PATH}index.php?m=oacarmgn&c=index&a=init&siteid={$siteid}">预约公车</a>  </div>
+<div class="vote_result">
+	<div class="calendarWrapper">
+	<div class="rightSidePanel mb50 fr">
+		<div id="div_day_detail" class="h_calendar_alm">
+			<div class="alm_date">预约详情</div>
+			<div class="alm_content">
+			<p>预约人：<span id="yyr"></span></p>
+			<p>预约车辆：<span id="yycl"></span></p>
+			<p>预约时间：<span id="yysj"></span></p>
+			<p>备注：<span id="bz"></span></p>
+			</div>
+		</div>
+	</div>
+	<div id='calendar'></div>
+	</div>
+	</div>
+</div>
+{template "content","footer"}

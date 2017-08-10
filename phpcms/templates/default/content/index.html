@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script>
+	$.ajax({
+	async:false,//false代表只有在等待ajax执行完毕后才执行window.open('http://www.phpernote.com')语句
+	type:'GET',
+	cache: false, //或者设置true
+	url:'{siteurl($siteid)}/index.php?m=content&c=index&a=getuserid',
+	dataType:'json',
+	success:function(msg){
+					if(!msg.userid){
+			      if (window.stop)
+				    window.stop();
+				    else
+				    document.execCommand("Stop");
+				    location.href="index.php?m=member&c=index&a=login";
+				  }
+	}
+});											
+</script>
+{template "content","header"}
+<div class="content">
+		{template "content","left"}
+		{template "content","right"}
+   <div class="clear"></div><!--清除浮动-->
+</div><!--content end-->
+<div class="bk10"></div>
+
+			<script  type="text/javascript"  src="{JS_PATH}common.js"></script>
+ 			<script  type="text/javascript">
+				 $(function(){
+					C.tabs({"params":[
+						{"nav":"#flink_group_0","con":"#flink_list_0","sclass":"current","nclass":""},
+						{"nav":"#flink_group_1","con":"#flink_list_1","sclass":"current","nclass":""},
+						{"nav":"#flink_group_2","con":"#flink_list_2","sclass":"current","nclass":""},
+						{"nav":"#flink_group_3","con":"#flink_list_3","sclass":"current","nclass":""},
+						{"nav":"#flink_group_4","con":"#flink_list_4","sclass":"current","nclass":""}
+						]
+					});
+				});
+			</script>
+			<div  class="web_nav list_con">
+				<div  class="f-l web_nav_left">
+					<span  class="web_n_img f-l"></span>
+						<div  class="web_n_tabs f-l">
+                <a  target="_self"  id="flink_group_0"  href="javascript:void(0);"  class="current">会员单位</a>
+								<a  target="_self"  id="flink_group_1"  href="javascript:void(0);"  class="selected_no">常用连接</a>
+								<a  target="_self"  id="flink_group_2"  href="javascript:void(0);"  class="selected_no">文字连接</a>
+						</div>
+				</div>
+				<div  class="f-l web_nav_right">
+							<div  id="flink_list_0"  class="link_item"  style="">		
+                   		{pc:content  action="lists" catid="39" order="id DESC" return="info"}
+                   		{loop $info $v}
+												<div  class="flink_hy">
+												<li><span class="title"><img src="images/dian.png" width="5px" height="5px" alt="" /> <a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{$v['title']}</a></span></li>
+											</div>
+											{/loop}
+											{/pc}
+							</div>
+							
+							<div  id="flink_list_1"  class="link_item"  style="display: none;">
+								        {pc:link  action="type_list" siteid="$siteid" linktype="1" order="listorder DESC" return="pic_link"}
+								        {loop $pic_link $v}
+								        <div  class="flink___"><a href="{$v['url']}" title="{$v['name']}" target="_blank"><img src="{$v[logo]}" width="110"/></a><a  href="{$v['url']}"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">{$v['name']}</a>
+								        </div>
+								        {/loop}
+								        {/pc}
+							</div>
+
+							<div  id="flink_list_2"  class="link_item"  style="display: none;">
+								        {pc:link  action="type_list" siteid="$siteid" linktype="0" order="listorder DESC" return="pic_link"}
+								        {loop $pic_link $v}
+								        <div  class="flink___"><a  href="{$v['url']}"  style="display:block;height:20px;line-height:30px;text-align:center;width: 110px;">{$v['name']}</a>
+								        </div>
+								        {/loop}
+								        {/pc}
+							</div>
+				</div>
+			</div>
+
+
+<div class="bk10"></div>
+
+<!--右下角短消息-->
+
+<script>
+		$.ajax({
+		type:'GET',
+		cache: false, //或者设置true
+		url:'{siteurl($siteid)}/index.php?m=content&c=index&a=getmessage',
+		success:function(msg){
+						//alert(msg);
+						$('#messagenum').html(msg).show();
+						}
+				});					
+</script>
+<div id="messagenum" ></div>
+
+
+{template "content","footer"}
+
+
+
+
+
+
+<!-- online qq start -->
+<link href="{CSS_PATH}online.css" rel="stylesheet" type="text/css" />
+<script>
+function changeOnline(num) {
+	if (isNaN(num) && num == "")
+		return;
+	for (var i = 1; i <=4 ; i++)
+	{
+		if (i == num)
+		{
+			document.getElementById("onlineSort" + i).className = "online_bar expand";
+			document.getElementById("onlineType" + i).style.display = "block";
+		}
+		else
+		{
+			document.getElementById("onlineSort" + i).className = "online_bar collapse";
+			document.getElementById("onlineType" + i).style.display = "none";
+		}
+	}
+}
+
+$(document).ready(function(){
+  $("#floatShow").bind("click",function(){
+    $('#onlineService').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#onlineService').show(); });$('#floatShow').attr('style','display:none');$('#floatHide').attr('style','display:block');
+	return false;
+  });
+  $("#floatHide").bind("click",function(){
+	$('#onlineService').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#onlineService').hide(); });$('#floatShow').attr('style','display:block');$('#floatHide').attr('style','display:none');
+  });
+  $(document).bind("click",function(event){
+	if ($(event.target).isChildOf("#online_qq_layer") == false)
+	{
+	 $('#onlineService').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#onlineService').hide(); });$('#floatShow').attr('style','display:block');$('#floatHide').attr('style','display:none');
+	}
+  });
+jQuery.fn.isChildAndSelfOf = function(b){
+    return (this.closest(b).length > 0);
+};
+jQuery.fn.isChildOf = function(b){
+    return (this.parents(b).length > 0);
+};
+  //$(window).scroll(function(){ 
+	//$('#online_qq_layer').stop().animate({top:$(document).scrollTop() + $("#online_qq_layer").height()}, 100) 
+  //}); 
+});
+</script>
+<div id="online_qq_layer">
+	<div id="online_qq_tab">
+		<div class="online_icon">
+			<a title id="floatShow" style="display: block;" href="javascript:void(0);">&nbsp;</a>
+			<a title id="floatHide" style="display: none;" href="javascript:void(0);">&nbsp;</a>
+		</div>
+		<!--online_icon end--></div>
+	<div id="onlineService">
+		<div class="online_windows overz">
+			<div class="online_w_top">
+			</div>
+			<!--online_w_top end-->
+			<div class="online_w_c overz">
+				<div class="online_bar expand" id="onlineSort1">
+					<h2><a onclick="changeOnline(1)">网站咨询</a></h2>
+					<div class="online_content overz" id="onlineType1">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes">1597407500</a></li>
+						</ul>
+					</div>
+					<!--online_content end--></div>
+				<!--online_bar end-->
+				<div class="online_bar collapse" id="onlineSort2">
+					<h2><a onclick="changeOnline(2)">刊物咨询</a></h2>
+					<div class="online_content overz" id="onlineType2">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1597407500&site=qq&menu=yes">1597407500</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--online_bar end-->
+				<div class="online_bar collapse" id="onlineSort3">
+					<h2><a onclick="changeOnline(3)">技术咨询1</a></h2>
+					<div class="online_content overz" id="onlineType3">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=45906623&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=45906623&site=qq&menu=yes">45906623</a></li>
+							<a href="tencent://Message/?Uin=45906623&websiteName=q-zone.qq.com&Menu=yes"><img border="0" SRC="http://wpa.qq.com/pa?p=1:45906623:14" alt="点击这里给我发消息"></a>
+						</ul>
+					</div>
+				</div>
+				<!--online_bar end-->
+				<div class="online_bar collapse" id="onlineSort4">
+					<h2><a onclick="changeOnline(4)">技术咨询2</a></h2>
+					<div class="online_content overz" id="onlineType4">
+						<ul class="overz">
+							<li>
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=18230721&site=qq&menu=yes" class="qq_icon">
+							QQ交谈</a></li>
+							<li>QQ： 
+							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=18230721&site=qq&menu=yes">18230721</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!--online_bar end--></div>
+			<!--online_w_c end-->
+			<div class="online_w_bottom">
+			</div>
+			<!--online_w_bottom end--></div>
+		<!--online_windows end--></div>
+</div>
+<!-- online qq end -->

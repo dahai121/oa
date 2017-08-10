@@ -1,0 +1,1 @@
+INSERT INTO `phpcms_module` (`module`, `name`, `url`, `iscore`, `version`, `description`, `setting`, `listorder`, `disabled`, `installdate`, `updatedate`) VALUES ('ren', '»À ¬', 'ren/', '0', '1.0', '', '', '0', '0', '2017-06-27', '2017-06-27');

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/phpcms/languages/zh-cn/keyword.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/languages/zh-cn/people.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/libs/classes/model.class.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/model/admin_role_priv_model.class.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/admin/classes/admin.class.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/admin/menu.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/announce/admin_announce.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/comment_check.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/comment_data.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/comment_setting.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/comment_table.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/config.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/extention.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/install/module.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/comment/templates/comment_check.tpl.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/content/fields/box/config.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/content/fields/box/field_add_form.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/content/sitemodel.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/link/classes/link_tag.class.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/link/install/config.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/link/install/extention.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/link/install/languages/zh-cn/link.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/link/install/module.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/mood/install/module.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/oacarmgn/install/oacarinfo.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/oattendance/oattendance.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/oattendance/templates/atten_select.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/oattendance/templates/atten_select_list.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/oattendance/templates/atten_show.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/oattendance/templates/atten_static.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/index.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/install/config.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/install/extention.inc.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/install/languages/zh-cn/people.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/install/module.sql" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/people.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/people_modelfield.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/sitemodel.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_list.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_list_tx.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/people_model_add.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/peoplemodel_field_add.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/sitemodel_manage.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/xiala.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/modules/people/templates/xiala_add.tpl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/templates/default/config.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/templates/default/oacarmgn/book_car.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/templates/default/oacarmgn/show.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/templates/default/oattendance/add_atten.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/phpcms/templates/default/oattendance/daily.html" charset="GBK" />
+  </component>
+</project>

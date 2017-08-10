@@ -1,0 +1,133 @@
+{template "content","header"}
+<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
+<!--main-->
+<div class="main">
+	<!--left_bar-->
+	<div class="col-right">
+		<div class="crumbs">
+			<a href="#">首页</a>
+		<span> &gt; </span>{catpos($catid)}</div>
+			
+        <!--初始化init-->
+			{php $theurl = "index.php?m=content&c=index&a=lists&catid=$catid";}
+			{php $titlevar = (isset($_GET['title']) ? $_GET['title'] : '');}
+			<!-- 读取缓存-->
+			{php $modelid_cache = getcache('model_field_'.$modelid,'model');}						<!-- 模型缓存 -->
+            <!-- sql_条件-->
+			<?php
+			/**-- 查询的数组 --**/
+			$where = array();
+			if($catid) $where['catid'] = (int) $catid;
+			if($genrevar) $where['genre'] = (int) $genrevar;
+			if($titlevar){
+				$titlesql = " AND title LIKE "."'%".$titlevar."%'";
+			}else{
+				$titlesql = '';
+			}
+			if($wnumbervar){
+				$wnumbersql = " AND wnumber LIKE "."'%".$wnumbervar."%'";
+			}else{
+				$wnumbersql = '';
+			}
+
+			function getwheresql($wheresqlarr) {
+				$result = $comma = '';
+				if(empty($wheresqlarr)) {
+					$result = '1';
+				} elseif(is_array($wheresqlarr)) {
+					foreach ($wheresqlarr as $key => $value) {
+						$result .= $comma.$key.'=\''.$value.'\'';
+						$comma = ' AND ';
+					}
+				} else {
+					$result = $wheresqlarr;
+				}
+				return $result;
+			}
+
+			$wheresql  = getwheresql($where);
+			$wheresql .= $titlesql;
+
+			?>
+			
+        <form name="myform" method="get" action="">
+	        <ul class="search-form">
+					<li>
+						<label>标题:</label>
+					<input type="text" name="title" value="{$_GET['title']}"></li>
+					<li><div class="btn"><input type="submit" value="搜索" /></div></li>
+					  <input type="hidden" name="m" value="content"> 
+					  <input type="hidden" name="c" value="index"> 
+					  <input type="hidden" name="a" value="lists"> 
+					  <input type="hidden" name="catid" value="{$catid}"> 
+					  <input type="hidden" name="dosubmit" value="1">
+			    </ul>
+				</form>
+            
+      {php $content_total = $content_tag->count(array('catid'=>$catid,'where'=>$wheresql,'modelid'=>$modelid,'moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));  }
+
+			<div class="lstnav">
+				<span></span>
+				<span>共找到<strong id="nums">{$content_total}</strong>个符合条件的内容  </span>
+			</div>
+			{php $urlrule = makeurlrule()}
+			
+			
+			{pc:content action="lists" where="$wheresql" catid="$catid" num="15" order="inputtime DESC" page="$page" moreinfo="1" urlrule="$urlrule"}
+			<div class="box boxsbg">
+				{loop $data $r}
+				<dl class="down_list sysnews">
+					<dt>
+						<h5>
+						<a target="_blank" href="{$r[url]}" title="{$r[title]}">标题:{$r[title]}</a>
+						</h5>
+					</dt>
+					<dd class="down_txt">&emsp;&emsp;{$r[description]}</dd>
+					<div class="bk10"></div>
+					{php $xia = string2array($r['downfiles']);}
+					{loop $xia $d}
+					<span style="color:#F00">相关文件下载:&emsp;</span><a href="{$d[fileurl]}">{$d[filename]}</a>
+					<br />
+					{/loop}
+					<dd class="down_attribute align_r">
+						<span class="icon_4">更新时间：{date('Y-m-d',$r[inputtime])}</span>
+					</dd>
+				</dl>
+
+				{/loop}
+				<!--pages-->
+				<div class="text-c mg_t20" id="pages">{$pages}</div>
+				{/pc}
+			</div>
+		</div>
+		<!--right_bar-->
+		<div class="col-auto">
+			<div class="box">
+				<h5 class="title-2">下载排行</h5>
+				<ul class="content digg">
+					{pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+					{loop $data $r}
+					<li>
+						<a href="{$r[url]}" target="_blank">{$r[title]}</a>
+					</li>
+					{/loop}
+					{/pc}
+				</ul>
+			</div>
+			<div class="bk10"></div>
+			<div class="box">
+				<h5 class="title-2">推荐下载</h5>
+				<ul class="content digg">
+					{pc:content  action="position" posid="5" order="listorder DESC" num="4"}
+					{loop $data $r}
+					<li>
+						<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],34)}</a>
+					</li>
+					{/loop}
+					{/pc}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="bk10"></div>
+	{template "content","footer"}

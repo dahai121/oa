@@ -1,0 +1,386 @@
+{template "content","header"}
+<link href="{CSS_PATH}vms/vms.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.tools_tabs.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#html').val('{player_code('video_player',$video['channelid'],$video['vid'],622,460)}');
+		$('#tag1').tabs("div.tabn1 > ul");
+	})
+
+	function copy_text(matter){
+		matter.select();
+		document.execCommand("Copy");
+		alert('复制成功！');
+	}
+
+</script>
+
+<div class="clr ct show_pg">
+	<div class="crumbs">
+		<a href="{APP_PATH}">首页</a>
+	<span> &gt; </span>{catpos($catid)} 正文</div>
+		<div class="lty1">
+			<div class="clr">
+				<div class="zj">
+					<h5>{$title}</h5>
+				</div>
+				<div class="clr xxg">
+					<div class="clr">总播放：<span id="hits"></span>
+					<span>|</span>  更新时间：{$inputtime}</div>
+					</div>
+				</div>
+				<div class="plbox">
+						<div class="bk15"></div>
+						
+						{if $video_type==2}
+								<?php
+								if (empty($_REQUEST["flv"])){
+								$vflv=$flvurl[0][url];
+								$vflv=urldecode($vflv);
+								}
+								else
+								{		
+								$vflv=$_REQUEST["flv"];
+								$vflv=urldecode($vflv);
+								} 
+								?>
+							{if $vflv<>""}
+							<div class="bk15"></div>
+							{$content}
+						  <object id="MediaPlayer" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" width="680" height="450" standby="Loading Windows Media Player components…" type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
+						    <param name="FileName" value="{$vflv}">
+						    <param name="AutoStart" value="true">
+						    <param name="ShowControls" value="true">
+						    <param name="BufferingTime" value="2">
+						    <param name="ShowStatusBar" value="true">
+						    <param name="AutoSize" value="true">
+						    <param name="InvokeURLs" value="false">
+						    <param name="AnimationatStart" value="1">
+						    <param name="TransparentatStart" value="1">
+						    <param name="Loop" value="1">
+						    <embed type="application/x-mplayer2" src="{$vflv}" name="MediaPlayer" autostart="1" showstatusbar="1" showdisplay="1" showcontrols="1" loop="0" videoborder3d="0" pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" width="680" height="450"></embed>
+						  </object>
+					
+							{else}
+							{$content}
+							{/if}
+							{/if}	
+						
+						{if $allow_visitor==1}
+									{loop $flvurl $pic_k $r}
+									{php $vflv=$vflv.$r[url]."|"}
+									{/loop}
+						<!--myplayer/begin-->
+						{if $vflv<>""}
+						{$content}
+						
+						<div class="bk15"></div>
+						<div id="myplayer" style="text-align: center;">
+					  <!--酷播迷你 CuPlayerMiniV4.0 代码开始-->
+					  <script type="text/javascript" src="statics/CuPlayer/images/swfobject.js"></script>
+					  <div id="CuPlayer" ></div>
+					  </div>
+							<div class="bk15"></div>
+							<div class="related">
+								点击播放列表即可播放视频
+								<div class="bk15"></div>
+						  	<div class="list">
+						    <ul class="mylist" style="height:150px;width:600px;overflow-x:hidden;overflow-y:auto" >
+							    {php $list=-1;$num=0;}
+									{loop $flvurl $pic_k $r}
+									{php $list++;$num++;}
+								  <dl>
+								  <dt><a href="#" onclick="changeStream({$list});"><strong>第{$num}集:{$r[alt]}</strong></a></dt>
+								  </dl>	
+									{/loop}	
+						    </ul>
+						  	</div>
+						  </div>
+							{else}
+							{$content}
+							{/if}
+							
+							
+							{if $video_type==1}
+							<script type=text/javascript>
+							<!--
+							//酷播迷你V4：官方连播代码示例20140611//
+							var CuPlayerList ="{$vflv}"
+							var sp =CuPlayerList.split("|")  
+							var num = sp.length;
+							var video_index = 0;
+							function getNext(pars)
+							{	
+							  if(video_index < num-1)
+								{ 
+									video_index++;
+									so.addVariable("CuPlayerFile",sp[video_index]);
+									so.addVariable("CuPlayerAutoPlay","yes"); //是否自动播放
+									so.write("CuPlayer");	
+								}
+								else
+								{
+								video_index = 0;
+								so.addVariable("CuPlayerFile",sp[video_index]);
+								so.addVariable("CuPlayerAutoPlay","yes"); //是否自动播放
+								so.write("CuPlayer");	
+								}
+								$(".list dl dt a").css("background","#ffffff").css("color","#333");
+								$(".list dl dt a").eq(video_index).css("background","#efefef").css("color","red");
+								LeftScr(video_index);
+							}
+							function changeStream(CuPlayerFile){
+							$(".list dl dt a").css("background","#ffffff").css("color","#333");
+							$(".list dl dt a:hover").css("background","#efefef").css("color","red");
+							LeftScr(CuPlayerFile);
+							video_index = CuPlayerFile;
+							so.addVariable("CuPlayerFile",sp[CuPlayerFile]);
+							so.addVariable("CuPlayerAutoPlay","yes"); //是否自动播放
+							so.write("CuPlayer");	
+							return false;
+							}
+							CuPlayerFile =sp[video_index];
+							$(".list dl dt a").css("background","#ffffff").css("color","#333");
+							$(".list dl dt a").eq(video_index).css("background","#efefef").css("color","red");
+							var so = new SWFObject("statics/CuPlayer/CuPlayerMiniV4.swf","ply","680","450","9","#000000");
+							so.addParam("allowfullscreen","true");
+							so.addParam("allowscriptaccess","always");
+							so.addParam("wmode","opaque");
+							so.addParam("quality","high");
+							so.addParam("salign","lt");
+							so.addVariable("CuPlayerFile",CuPlayerFile);
+							so.addVariable("CuPlayerSetFile","statics/CuPlayer/CuPlayerSetFile.xml"); //* 必须存在/播放器配置文件地址
+							so.addVariable("CuPlayerImage","statics/CuPlayer/images/start.jpg");//* 必须存在/视频略缩图,本图片文件必须正确
+							so.addVariable("CuPlayerWidth","680"); //视频宽度
+							so.addVariable("CuPlayerHeight","450"); //视频高度
+							so.addVariable("CuPlayerAutoPlay","yes"); //是否自动播放
+							//so.addVariable("CuPlayerLogo","logo.png"); //Logo文件地址
+							so.addVariable("CuPlayerPosition","bottom-right"); //Logo显示的位置
+							so.write("CuPlayer");	
+							
+							function LeftScr(m){
+								var scrtop;
+								if(m>1){
+								scrtop=55*(m-1);
+								}else{
+									scrtop=0;
+									}
+								$(".list").animate({
+									scrollTop:scrtop
+									},130);
+								}
+							//-->
+							</script>
+							<!--酷播迷你 CuPlayerMiniV4.0 代码结束-->					
+							{/if}
+									
+
+							<!--内容关联投票-->
+							{if $voteid}<script language="javascript" src="{APP_PATH}index.php?m=vote&c=index&a=show&action=js&subjectid={$voteid}&type=2"></script>{/if}
+
+							{else}
+							<CENTER>
+								<a href="{APP_PATH}index.php?m=content&c=readpoint&allow_visitor={$allow_visitor}">
+									<font color="red">阅读此信息需要您支付 <B>
+										<I>{$readpoint} {if $paytype}元{else}点{/if}</I>
+									</B>，点击这里支付</font>
+								</a>
+							</CENTER>
+							{/if}
+							{if $titles}
+							<fieldset>
+								<legend class="f14">本文导航</legend>
+								<ul class="list blue row-2">
+									{loop $titles $r}
+									<li>{$n}、<a href="{$r[url]}">{$r[title]}</a>
+									</li>
+									{/loop}
+								</ul>
+							</fieldset>
+							{/if}
+							<div id="pages" class="text-c">{$pages}</div>
+						</div>
+						<div style="width:100%; margin:0 auto;">
+							<p class="f14">
+								<strong>上一篇：</strong>
+								<a href="{$previous_page[url]}">{$previous_page[title]}</a>
+								<br />
+								<strong>下一篇：</strong>
+								<a href="{$next_page[url]}">{$next_page[title]}</a>
+							</p>
+						</div>
+						<div class="bk15"></div>
+
+					<div class="clr mgt10 mgb10">
+						{if $allow_comment && module_exists('comment')}
+						<iframe src="{APP_PATH}index.php?m=comment&c=index&a=init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+
+						<div class="bk10"></div>
+						<div class="box">
+							<h5>评论排行</h5>
+							{pc:comment action="bang" siteid="$siteid" cache="3600"}
+							<ul class="content list blue f14 row-2">
+								{loop $data $r}
+								<li>·<a href="{$r[url]}" target="_blank">{str_cut($r[title], 34)}</a>
+									<span>({$r[total]})</span>
+								</li>
+								{/loop}
+							</ul>
+							{/pc}
+						</div>
+						{/if}
+					</div>
+				</div>
+				<div class="wp lty2">
+
+					<div class="box0">
+						<div class="nav">
+							<h5>上升最快的视频</h5>
+						</div>
+						<div class="bct">
+							<div class="lbbox nos" >
+								<ul class="c1 c2">
+
+									{pc:content action="hits" catid="$catid" num="5" order="dayviews DESC" cache="0"}
+									{loop $data $r}
+									<li>
+										<div class="clr h77">
+											<a href="{$r[url]}" >
+											<img src="{$r[thumb]}" width="104" height="65" class="l"></a>
+											<div class="lh21">
+												<a href="{$r[url]}" >{$r[title]}</a>
+											</div>
+											<div class="sz">
+												<span>评论：{get_comments(id_encode("content_$r[catid]",$r[id],$siteid))}</span>
+											</div>
+										</div>
+									</li>
+									{/loop}
+									{/pc}
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="mgt10 box2">
+						<div class="nav tag3">
+							<ul class="clr col3"  id="tag1">
+								<li>
+									<a href="#" class="ac">热点</a>
+								</li>
+								<li>
+									<a href="#">评论</a>
+								</li>
+								<li>
+									<a href="#">关注</a>
+								</li>
+							</ul>
+						</div>
+						<div class="bct tabn1">
+							<ul class="uli4 mg10">
+								{pc:content action="hits" catid="$catid" num="10" order="views DESC"}
+								{loop $data $r}
+								{php $ids = explode('-',$r[hitsid]); $pic = get_pic($ids[2],$r[catid]);}
+								{if $n==1}
+								<li class="p_r">
+									<div class="l">
+										<span class="bs">1</span>
+										<a href="{$r[url]}" title="{$r[title]}">
+										<img src="{$pic[thumb]}" width="106" height="75"></a>
+									</div>
+									<div class="lh18">
+										<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],24,false)}</a>
+									</div>
+									<div>{str_cut($r[description],45)}</div>
+								</li>
+								{else}
+								<li>
+									<a href="{$r[url]}" title="{$r[title]}" target="_blank">{str_cut($r[title],44,false)}</a>
+								</li>
+								{/if}
+								{/loop}
+								{/pc}
+							</ul>
+
+							<ul class="uli4 mg10 hidden">
+								{pc:comment action="bang" num="9" cache="0"}
+								{loop $data $r}
+								{if $n==1}
+								<li class="p_r">
+									<div class="l">
+										<span class="bs">1</span>
+										<a href="{$r[url]}" title="{$r[title]}">
+										<img src="{$r[thumb]}" width="106" height="75"></a>
+									</div>
+									<div class="lh18">
+										<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],24,false)}</a>
+									</div>
+									<div>{str_cut($r[description],45,false)}</div>
+								</li>
+								{else}
+								<li>
+									<a href="{$r[url]}" title="{$r[title]}" target="_blank">{str_cut($r[title],44,false)}</a>
+								</li>
+								{/if}
+								{/loop}
+								{/pc}
+							</ul>
+
+							<ul class="uli4 mg10 hidden">
+								{pc:content action="hits" catid="$catid" num="10" order="views DESC"}
+								{loop $data $r}
+								{if $n==1}
+								<li class="p_r">
+									<div class="l">
+										<span class="bs">1</span>
+										<a href="{$r[url]}" title="{$r[title]}">
+										<img src="{$r[thumb]}" width="106" height="75"></a>
+									</div>
+									<div class="lh18">
+										<a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],24,false)}</a>
+									</div>
+									<div>{str_cut($r[description],45,false)}</div>
+								</li>
+								{else}
+								<li>
+									<a href="{$r[url]}" title="{$r[title]}" target="_blank">{str_cut($r[title],44,false)}</a>
+								</li>
+								{/if}
+								{/loop}
+								{/pc}
+							</ul>
+
+
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+			<script language="JavaScript">
+				<!--
+				//切换地址
+				function show_url(id) {
+					var local_value = $('#url').val();
+					if(id == 1){
+						$('#url').val('');
+					}else{
+
+					}
+					var local = 'local'+id;
+					var remote = 'remote'+id;
+
+					var remote_value = $('#'+remote).val();
+				$.get('index.php', {m:'cloudhost', c:'bucket', a:'ChangeBucket', local:local_value,remote:remote_value, id:id, time:Math.random()}, function (data){
+					if(data=='ok'){
+						alert('记录修改成功！');
+					}else{
+						alert('修改失败！');
+					}
+				});
+			}
+			//-->
+		</script>
+		{template "content","footer"}

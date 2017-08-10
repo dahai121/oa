@@ -1,0 +1,39 @@
+<style>
+/* 底部 */
+.foot {font: 12px/1.5 Arial;}
+.footer-nav-box { position: fixed; bottom: 0; left: 0; width: 100%; height: 40px; background: #333; _position: absolute; _bottom: auto;  _top: expression(eval(document.documentElement.scrollTop +  document.body.clientHeight - 42) );
+}
+.footer-nav { width: 980px; margin: 0 auto; }
+.footer-nav .copyright { float: left; padding: 0 0 0 40px; line-height: 40px; color: #ccc; background: url({IMG_PATH}footer.png) -252px  -112px no-repeat; }
+.footer-nav p { float: right; line-height: 40px; color: #666; }
+.footer-nav p a { color: #ccc; margin: 0 7px; }
+.footer-nav p a:hover { color: #ccc; }	
+</style>
+
+<div id="footer">
+{pc:content action="category" catid="1" num="15" siteid="$siteid" order="listorder ASC"}
+{loop $data $r}
+<a href="{$r[url]}" target="_blank">{$r[catname]}</a> |  
+{/loop}
+{/pc}
+<a href="{APP_PATH}index.php?m=link" target="_blank">友情链接</a>
+
+<p class="cp">Powered by <strong><a href="http://www.phpcms.cn" target="_blank">PHPCMS</a></strong> <em>v9</em> &copy; {date('Y', SYS_TIME)} <img src="{IMG_PATH}copyright.gif"/>
+</p>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+		<div class="foot">
+			<div class="footer-nav-box">
+				<div class="footer-nav">
+					<div class="copyright">&copy;冶金离退休干部局. All rights reserved.</div>
+					<p>
+					<a href="">技术支持：冶金工业信息中心</a>|<a href="">联系方式：65133322-1167</a>|</p>
+				</div>
+			</div>
+		</div>
+
+
+</body>
+</html>
